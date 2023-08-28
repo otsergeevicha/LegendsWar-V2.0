@@ -64,7 +64,7 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Firearms"",
+                    ""name"": ""ArchAbility"",
                     ""type"": ""Button"",
                     ""id"": ""3c66a01f-e527-4bb5-ac89-20726a04e0b0"",
                     ""expectedControlType"": ""Button"",
@@ -73,7 +73,7 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Flamethrower"",
+                    ""name"": ""SwordAbility"",
                     ""type"": ""Button"",
                     ""id"": ""03196d0f-ae5c-49d2-a6fe-099605f44219"",
                     ""expectedControlType"": ""Button"",
@@ -82,9 +82,18 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Grenade"",
+                    ""name"": ""GrenadeAbility"",
                     ""type"": ""Button"",
                     ""id"": ""17090b9f-fe2a-46e1-993e-1d7b2dbf5042"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UltimateAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""8875bc69-f444-45db-8eb2-7d8c38f2133f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -216,11 +225,11 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""eb85c581-6d39-45e5-8470-3ac0ffb6028f"",
-                    ""path"": ""<Keyboard>/1"",
+                    ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Grenade"",
+                    ""action"": ""GrenadeAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -231,7 +240,7 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Grenade"",
+                    ""action"": ""GrenadeAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -293,11 +302,11 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8747c8b7-b712-45a2-a3b2-a40bd5f8ed47"",
-                    ""path"": ""<Keyboard>/2"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Firearms"",
+                    ""action"": ""ArchAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -308,18 +317,18 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Firearms"",
+                    ""action"": ""ArchAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""63632b69-46ec-4daa-b52f-eca67e58bc5c"",
-                    ""path"": ""<Keyboard>/3"",
+                    ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Flamethrower"",
+                    ""action"": ""SwordAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -330,7 +339,29 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Flamethrower"",
+                    ""action"": ""SwordAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a291d95-aa64-47ce-a592-68d758524d65"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""UltimateAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a028e2d-8e70-4b3f-be66-1dc59d570c2c"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UltimateAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -373,9 +404,10 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
-        m_Player_Firearms = m_Player.FindAction("Firearms", throwIfNotFound: true);
-        m_Player_Flamethrower = m_Player.FindAction("Flamethrower", throwIfNotFound: true);
-        m_Player_Grenade = m_Player.FindAction("Grenade", throwIfNotFound: true);
+        m_Player_ArchAbility = m_Player.FindAction("ArchAbility", throwIfNotFound: true);
+        m_Player_SwordAbility = m_Player.FindAction("SwordAbility", throwIfNotFound: true);
+        m_Player_GrenadeAbility = m_Player.FindAction("GrenadeAbility", throwIfNotFound: true);
+        m_Player_UltimateAbility = m_Player.FindAction("UltimateAbility", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -441,9 +473,10 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Zoom;
     private readonly InputAction m_Player_Shoot;
-    private readonly InputAction m_Player_Firearms;
-    private readonly InputAction m_Player_Flamethrower;
-    private readonly InputAction m_Player_Grenade;
+    private readonly InputAction m_Player_ArchAbility;
+    private readonly InputAction m_Player_SwordAbility;
+    private readonly InputAction m_Player_GrenadeAbility;
+    private readonly InputAction m_Player_UltimateAbility;
     public struct PlayerActions
     {
         private @MapInputs m_Wrapper;
@@ -452,9 +485,10 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
-        public InputAction @Firearms => m_Wrapper.m_Player_Firearms;
-        public InputAction @Flamethrower => m_Wrapper.m_Player_Flamethrower;
-        public InputAction @Grenade => m_Wrapper.m_Player_Grenade;
+        public InputAction @ArchAbility => m_Wrapper.m_Player_ArchAbility;
+        public InputAction @SwordAbility => m_Wrapper.m_Player_SwordAbility;
+        public InputAction @GrenadeAbility => m_Wrapper.m_Player_GrenadeAbility;
+        public InputAction @UltimateAbility => m_Wrapper.m_Player_UltimateAbility;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -476,15 +510,18 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
-            @Firearms.started += instance.OnFirearms;
-            @Firearms.performed += instance.OnFirearms;
-            @Firearms.canceled += instance.OnFirearms;
-            @Flamethrower.started += instance.OnFlamethrower;
-            @Flamethrower.performed += instance.OnFlamethrower;
-            @Flamethrower.canceled += instance.OnFlamethrower;
-            @Grenade.started += instance.OnGrenade;
-            @Grenade.performed += instance.OnGrenade;
-            @Grenade.canceled += instance.OnGrenade;
+            @ArchAbility.started += instance.OnArchAbility;
+            @ArchAbility.performed += instance.OnArchAbility;
+            @ArchAbility.canceled += instance.OnArchAbility;
+            @SwordAbility.started += instance.OnSwordAbility;
+            @SwordAbility.performed += instance.OnSwordAbility;
+            @SwordAbility.canceled += instance.OnSwordAbility;
+            @GrenadeAbility.started += instance.OnGrenadeAbility;
+            @GrenadeAbility.performed += instance.OnGrenadeAbility;
+            @GrenadeAbility.canceled += instance.OnGrenadeAbility;
+            @UltimateAbility.started += instance.OnUltimateAbility;
+            @UltimateAbility.performed += instance.OnUltimateAbility;
+            @UltimateAbility.canceled += instance.OnUltimateAbility;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -501,15 +538,18 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
-            @Firearms.started -= instance.OnFirearms;
-            @Firearms.performed -= instance.OnFirearms;
-            @Firearms.canceled -= instance.OnFirearms;
-            @Flamethrower.started -= instance.OnFlamethrower;
-            @Flamethrower.performed -= instance.OnFlamethrower;
-            @Flamethrower.canceled -= instance.OnFlamethrower;
-            @Grenade.started -= instance.OnGrenade;
-            @Grenade.performed -= instance.OnGrenade;
-            @Grenade.canceled -= instance.OnGrenade;
+            @ArchAbility.started -= instance.OnArchAbility;
+            @ArchAbility.performed -= instance.OnArchAbility;
+            @ArchAbility.canceled -= instance.OnArchAbility;
+            @SwordAbility.started -= instance.OnSwordAbility;
+            @SwordAbility.performed -= instance.OnSwordAbility;
+            @SwordAbility.canceled -= instance.OnSwordAbility;
+            @GrenadeAbility.started -= instance.OnGrenadeAbility;
+            @GrenadeAbility.performed -= instance.OnGrenadeAbility;
+            @GrenadeAbility.canceled -= instance.OnGrenadeAbility;
+            @UltimateAbility.started -= instance.OnUltimateAbility;
+            @UltimateAbility.performed -= instance.OnUltimateAbility;
+            @UltimateAbility.canceled -= instance.OnUltimateAbility;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -551,8 +591,9 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
-        void OnFirearms(InputAction.CallbackContext context);
-        void OnFlamethrower(InputAction.CallbackContext context);
-        void OnGrenade(InputAction.CallbackContext context);
+        void OnArchAbility(InputAction.CallbackContext context);
+        void OnSwordAbility(InputAction.CallbackContext context);
+        void OnGrenadeAbility(InputAction.CallbackContext context);
+        void OnUltimateAbility(InputAction.CallbackContext context);
     }
 }

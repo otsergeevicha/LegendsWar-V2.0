@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Firearms",
+                    "name": "ArchAbility",
                     "type": "Button",
                     "id": "3c66a01f-e527-4bb5-ac89-20726a04e0b0",
                     "expectedControlType": "Button",
@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Flamethrower",
+                    "name": "SwordAbility",
                     "type": "Button",
                     "id": "03196d0f-ae5c-49d2-a6fe-099605f44219",
                     "expectedControlType": "Button",
@@ -60,9 +60,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Grenade",
+                    "name": "GrenadeAbility",
                     "type": "Button",
                     "id": "17090b9f-fe2a-46e1-993e-1d7b2dbf5042",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UltimateAbility",
+                    "type": "Button",
+                    "id": "8875bc69-f444-45db-8eb2-7d8c38f2133f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -194,11 +203,11 @@
                 {
                     "name": "",
                     "id": "eb85c581-6d39-45e5-8470-3ac0ffb6028f",
-                    "path": "<Keyboard>/1",
+                    "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Grenade",
+                    "action": "GrenadeAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -209,7 +218,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Grenade",
+                    "action": "GrenadeAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -271,11 +280,11 @@
                 {
                     "name": "",
                     "id": "8747c8b7-b712-45a2-a3b2-a40bd5f8ed47",
-                    "path": "<Keyboard>/2",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Firearms",
+                    "action": "ArchAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -286,18 +295,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Firearms",
+                    "action": "ArchAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "63632b69-46ec-4daa-b52f-eca67e58bc5c",
-                    "path": "<Keyboard>/3",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Flamethrower",
+                    "action": "SwordAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -308,7 +317,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Flamethrower",
+                    "action": "SwordAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a291d95-aa64-47ce-a592-68d758524d65",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "UltimateAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a028e2d-8e70-4b3f-be66-1dc59d570c2c",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "UltimateAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
