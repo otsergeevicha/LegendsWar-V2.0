@@ -19,8 +19,6 @@ namespace Reflex
             IInputService input = container.Single<IInputService>();
             IWallet wallet = container.Single<IWallet>();
             IGameFactory gameFactory = container.Single<IGameFactory>();
-
-            
         }
     }
 }
