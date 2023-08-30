@@ -15,7 +15,8 @@ namespace HeroLogic
     {
         [SerializeField] private HeroMovement _heroMovement;
         [SerializeField] private HeroShooting _heroShooting;
-    
+        [SerializeField] private RootCamera _rootCamera;
+
         private HeroHealth _health;
 
         public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow)
@@ -35,6 +36,9 @@ namespace HeroLogic
 
         protected override void OnDisabled() => 
             _health.Died -= GameOver;
+
+        public Transform GetCameraRoot() => 
+            _rootCamera.transform;
 
         public void TakeDamage(int damage) => 
             _health.ApplyDamage(damage);

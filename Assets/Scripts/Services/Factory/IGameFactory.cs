@@ -1,4 +1,5 @@
-﻿using Ammo.Ammunition;
+﻿using Windows;
+using Ammo.Ammunition;
 using CameraLogic;
 using EnemyLogic;
 using HeroLogic;
@@ -9,7 +10,7 @@ namespace Services.Factory
     public interface IGameFactory
     {
         Hero CreateHero();
-        void CreateWindowRoot();
+        WindowRoot CreateWindowRoot();
         CameraFollow CreateCamera();
 
         Pool CreatePool();

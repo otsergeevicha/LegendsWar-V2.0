@@ -14,14 +14,11 @@ namespace AbilityLogic
 
         public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow)
         {
-            _input = input;
-
-            for (int i = 0; i < _abilities.Length; i++) 
-                _abilities[i].Construct(_input, pool, cameraFollow);
-        }
-
-        private void Start()
-        {
+             _input = input;
+            //
+            // for (int i = 0; i < _abilities.Length; i++) 
+            //     _abilities[i].Construct(_input, pool, cameraFollow);
+            
             SelectAbility((int)IndexAbility.Arch);
 
             _input.PushArch(() =>

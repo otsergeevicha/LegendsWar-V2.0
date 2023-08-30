@@ -28,8 +28,13 @@ namespace CameraLogic
         private float _targetPitch;
         private bool _zoom;
     
-        public void Construct(IInputService input)
+        public void Construct(IInputService input, Transform cameraRootHero)
         {
+            _following = cameraRootHero;
+            
+            _cameraFollow.Follow = cameraRootHero;
+            _zoomFollow.Follow = cameraRootHero;
+            
             _zoomFollow.gameObject.SetActive(false);
             _input = input;
             SetCursorState(_cursorLocked);
@@ -41,14 +46,6 @@ namespace CameraLogic
 
         public Camera GetCameraMain() =>
             _camera;
-
-        public void InitFollowing(Transform following)
-        {
-            _following = following;
-
-            _cameraFollow.Follow = following;
-            _zoomFollow.Follow = following;
-        }
 
         public void SetSensitivity(float sensitivity) =>
             _sensitivity = sensitivity;

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Windows;
+using CameraLogic;
+using HeroLogic;
+using Infrastructure.Factory.Pools;
 using Plugins.MonoCache;
 using Reflex.Core;
 using Services.Factory;
@@ -19,6 +22,15 @@ namespace Reflex
             IInputService input = container.Single<IInputService>();
             IWallet wallet = container.Single<IWallet>();
             IGameFactory gameFactory = container.Single<IGameFactory>();
+
+            Pool pool = gameFactory.CreatePool();
+            CameraFollow cameraFollow = gameFactory.CreateCamera();
+            WindowRoot windowRoot = gameFactory.CreateWindowRoot();
+            Hero hero = gameFactory.CreateHero();
+
+            pool.Construct(gameFactory);
+            hero.Construct(input, pool, cameraFollow);
+            cameraFollow.Construct(input, hero.GetCameraRoot());
         }
     }
 }

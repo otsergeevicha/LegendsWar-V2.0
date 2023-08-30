@@ -17,8 +17,11 @@ namespace HeroLogic.Movements
         private IInputService _input;
         private float _rotationVelocity;
 
-        public void Construct(IInputService input) => 
+        public void Construct(IInputService input)
+        {
             _input = input;
+            _input.OnControls();
+        }
 
         private void OnValidate()
         {
@@ -32,9 +35,6 @@ namespace HeroLogic.Movements
 
         protected override void OnDisabled() =>
             _input.OffControls();
-
-        private void OnAnimEnded() =>
-            _input.OnControls();
 
         private void BaseLogic()
         {

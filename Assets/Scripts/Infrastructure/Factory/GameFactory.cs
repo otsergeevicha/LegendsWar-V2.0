@@ -1,4 +1,5 @@
-﻿using Ammo.Ammunition;
+﻿using Windows;
+using Ammo.Ammunition;
 using CameraLogic;
 using EnemyLogic;
 using HeroLogic;
@@ -19,8 +20,9 @@ namespace Infrastructure.Factory
             _assetsProvider.InstantiateEntity(Constants.HeroPath)
                 .GetComponent<Hero>();
 
-        public void CreateWindowRoot() =>
-            _assetsProvider.InstantiateEntity(Constants.WindowRootPath);
+        public WindowRoot CreateWindowRoot() =>
+            _assetsProvider.InstantiateEntity(Constants.WindowRootPath)
+                .GetComponent<WindowRoot>();
 
         public CameraFollow CreateCamera() =>
             _assetsProvider.InstantiateEntity(Constants.CameraPath)
