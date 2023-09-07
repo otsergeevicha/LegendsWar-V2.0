@@ -2,6 +2,9 @@
 using Plugins.MonoCache;
 using Services.Inputs;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.OnScreen;
 
 namespace HeroLogic.Movements
 {
@@ -42,15 +45,13 @@ namespace HeroLogic.Movements
 
             if (_input.MoveAxis.sqrMagnitude > Single.Epsilon)
             {
-                // _animator.SetBool(Constants.HeroWalkHash, true);
+                 _animator.SetBool(Constants.HeroRunHash, true);
         
                 movementVector = new Vector3(_input.MoveAxis.x, 0.0f, _input.MoveAxis.y).normalized;
                 transform.forward = movementVector;
             }
             else
-            {
-                //_animator.SetBool(Constants.HeroWalkHash, false);
-            }
+                _animator.SetBool(Constants.HeroRunHash, false);
 
             movementVector += Physics.gravity;
 

@@ -64,15 +64,6 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ArchAbility"",
-                    ""type"": ""Button"",
-                    ""id"": ""3c66a01f-e527-4bb5-ac89-20726a04e0b0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""SwordAbility"",
                     ""type"": ""Button"",
                     ""id"": ""03196d0f-ae5c-49d2-a6fe-099605f44219"",
@@ -301,28 +292,6 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8747c8b7-b712-45a2-a3b2-a40bd5f8ed47"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""ArchAbility"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""59f7e8a3-558e-4eb7-8833-bc0927337159"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""ArchAbility"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""63632b69-46ec-4daa-b52f-eca67e58bc5c"",
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
@@ -404,7 +373,6 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
-        m_Player_ArchAbility = m_Player.FindAction("ArchAbility", throwIfNotFound: true);
         m_Player_SwordAbility = m_Player.FindAction("SwordAbility", throwIfNotFound: true);
         m_Player_GrenadeAbility = m_Player.FindAction("GrenadeAbility", throwIfNotFound: true);
         m_Player_UltimateAbility = m_Player.FindAction("UltimateAbility", throwIfNotFound: true);
@@ -473,7 +441,6 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Zoom;
     private readonly InputAction m_Player_Shoot;
-    private readonly InputAction m_Player_ArchAbility;
     private readonly InputAction m_Player_SwordAbility;
     private readonly InputAction m_Player_GrenadeAbility;
     private readonly InputAction m_Player_UltimateAbility;
@@ -485,7 +452,6 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
-        public InputAction @ArchAbility => m_Wrapper.m_Player_ArchAbility;
         public InputAction @SwordAbility => m_Wrapper.m_Player_SwordAbility;
         public InputAction @GrenadeAbility => m_Wrapper.m_Player_GrenadeAbility;
         public InputAction @UltimateAbility => m_Wrapper.m_Player_UltimateAbility;
@@ -510,9 +476,6 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
-            @ArchAbility.started += instance.OnArchAbility;
-            @ArchAbility.performed += instance.OnArchAbility;
-            @ArchAbility.canceled += instance.OnArchAbility;
             @SwordAbility.started += instance.OnSwordAbility;
             @SwordAbility.performed += instance.OnSwordAbility;
             @SwordAbility.canceled += instance.OnSwordAbility;
@@ -538,9 +501,6 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
-            @ArchAbility.started -= instance.OnArchAbility;
-            @ArchAbility.performed -= instance.OnArchAbility;
-            @ArchAbility.canceled -= instance.OnArchAbility;
             @SwordAbility.started -= instance.OnSwordAbility;
             @SwordAbility.performed -= instance.OnSwordAbility;
             @SwordAbility.canceled -= instance.OnSwordAbility;
@@ -591,7 +551,6 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
-        void OnArchAbility(InputAction.CallbackContext context);
         void OnSwordAbility(InputAction.CallbackContext context);
         void OnGrenadeAbility(InputAction.CallbackContext context);
         void OnUltimateAbility(InputAction.CallbackContext context);

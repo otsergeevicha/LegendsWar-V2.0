@@ -1,4 +1,6 @@
-﻿public static class Constants
+﻿using UnityEngine;
+
+public static class Constants
 {
     //saveLoad
     public const string Progress = "Progress";
@@ -15,6 +17,9 @@
     //hero
     public const int HeroMaxHealth = 100;
     public const int HeroSpeed = 4;
+    
+    //animator hero
+    public static readonly int HeroRunHash = Animator.StringToHash("Run");
     
     //regeneration
     public const float DelayRegeneration = .5f;

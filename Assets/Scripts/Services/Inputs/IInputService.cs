@@ -13,7 +13,6 @@ namespace Services.Inputs
         void PushShoot(Action onShoot);
         void OffShoot(Action offShoot);
         void PushGrenade(Action onGrenade);
-        void PushArch(Action onFirearms);
         void PushSword(Action onFlamethrower);
         void PushUltimate(Action onShield);
         bool IsCurrentDevice();

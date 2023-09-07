@@ -7,10 +7,9 @@ namespace AbilityLogic
 {
     enum IndexAbility
     {
-        Arch = 0,
-        Sword = 1,
-        Grenade = 2,
-        Ultimate = 3
+        Sword = 0,
+        Grenade = 1,
+        Ultimate = 2
     }
 
     public abstract class Ability : MonoCache

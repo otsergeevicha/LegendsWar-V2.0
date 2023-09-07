@@ -34,10 +34,6 @@ namespace Inputs
             _input.Player.Shoot.canceled += _ =>
                 offShoot?.Invoke();
 
-        public void PushArch(Action onFirearms) => 
-            _input.Player.ArchAbility.performed += _ =>
-                onFirearms?.Invoke();
-
         public void PushSword(Action onFlamethrower) => 
             _input.Player.SwordAbility.performed += _ =>
                 onFlamethrower?.Invoke();

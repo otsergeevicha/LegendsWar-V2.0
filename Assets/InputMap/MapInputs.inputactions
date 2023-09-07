@@ -42,15 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ArchAbility",
-                    "type": "Button",
-                    "id": "3c66a01f-e527-4bb5-ac89-20726a04e0b0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "SwordAbility",
                     "type": "Button",
                     "id": "03196d0f-ae5c-49d2-a6fe-099605f44219",
@@ -274,28 +265,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8747c8b7-b712-45a2-a3b2-a40bd5f8ed47",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "ArchAbility",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "59f7e8a3-558e-4eb7-8833-bc0927337159",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ArchAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
