@@ -31,6 +31,7 @@ namespace Reflex
             pool.Construct(gameFactory);
             hero.Construct(input, pool, cameraFollow);
             cameraFollow.Construct(input, hero.GetCameraRoot());
+            windowRoot.Construct(save,input,wallet,gameFactory);
         }
     }
 }
