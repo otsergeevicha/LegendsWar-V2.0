@@ -20,13 +20,17 @@ namespace HeroLogic
             if (_currentHealth>= damage) 
                 Spend(damage);
 
-            if (_currentHealth <= 0) 
-                Died?.Invoke();
+            if (_currentHealth > 0) return;
+            _currentHealth = 0;
+            Died?.Invoke();
         }
 
         public void ReturnMaxHealth() => 
             _currentHealth = _maxHealth;
 
+        public int ReturnHealth() => 
+            _currentHealth;
+        
         private void Spend(int damage) => 
             _currentHealth -= damage;
     }

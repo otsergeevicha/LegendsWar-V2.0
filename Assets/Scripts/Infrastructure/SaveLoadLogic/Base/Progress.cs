@@ -1,4 +1,5 @@
 ﻿using System;
+using Infrastructure.GroupData;
 
 namespace Infrastructure.SaveLoadLogic.Base
 {
@@ -6,8 +7,12 @@ namespace Infrastructure.SaveLoadLogic.Base
     public class Progress
     {
         public DataWallet DataWallet;
+        public CharacterAttributes _characterAttributes;
 
-        public Progress() => 
+        public Progress()
+        {
             DataWallet = new DataWallet();
+            _characterAttributes = new CharacterAttributes();
+        }
     }
 }

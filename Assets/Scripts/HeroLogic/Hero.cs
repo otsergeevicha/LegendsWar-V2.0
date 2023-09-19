@@ -5,6 +5,7 @@ using Infrastructure.Factory.Pools;
 using Plugins.MonoCache;
 using Services.Health;
 using Services.Inputs;
+using Services.SaveLoad;
 using UnityEngine;
 
 namespace HeroLogic
@@ -17,15 +18,21 @@ namespace HeroLogic
         [SerializeField] private HeroShooting _heroShooting;
         [SerializeField] private RootCamera _rootCamera;
 
+        public int Health => _health.ReturnHealth();
+        
         private HeroHealth _health;
-
-        public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow)
+        private ISave _save;
+        
+        public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow,ISave save)
         {
+            _save = save;
             _health = new HeroHealth(Constants.HeroMaxHealth);
             _health.Died += GameOver;
 
             _heroMovement.Construct(input);
-            _heroShooting.Construct(input, pool, cameraFollow);
+            _heroShooting.Construct(input, pool, cameraFollow,this);
+            _save.AccessProgress()._characterAttributes.RecordHealth(Health);
+           // _save.AccessProgress().DataStats.RecordEnergy(Energy);
         }
 
         private void OnValidate()
@@ -40,8 +47,12 @@ namespace HeroLogic
         public Transform GetCameraRoot() => 
             _rootCamera.transform;
 
-        public void TakeDamage(int damage) => 
+        public void TakeDamage(int damage)
+        {
             _health.ApplyDamage(damage);
+            
+            _save.AccessProgress()._characterAttributes.RecordHealth(Health);
+        }
 
         private void GameOver()
         {

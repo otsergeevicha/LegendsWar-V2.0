@@ -8,6 +8,7 @@ using Services.Factory;
 using Services.Inputs;
 using Services.SaveLoad;
 using Services.Wallet;
+using UI.Windows;
 
 namespace Reflex
 {
@@ -29,7 +30,7 @@ namespace Reflex
             Hero hero = gameFactory.CreateHero();
 
             pool.Construct(gameFactory);
-            hero.Construct(input, pool, cameraFollow);
+            hero.Construct(input, pool, cameraFollow,save);
             cameraFollow.Construct(input, hero.GetCameraRoot());
             windowRoot.Construct(save,input,wallet,gameFactory);
         }
