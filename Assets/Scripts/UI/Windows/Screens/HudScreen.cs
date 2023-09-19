@@ -27,10 +27,10 @@ namespace Windows.Screens
             //_healthBar.Construct(save);
         }
         
-        public void OnActive() => 
+        public void Activate() => 
             gameObject.SetActive(true);
 
-        public void InActive() => 
+        public void Deactivate() => 
             gameObject.SetActive(false);
 
         

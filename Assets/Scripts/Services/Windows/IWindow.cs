@@ -2,7 +2,7 @@
 {
     public interface IWindow
     {
-        void OnActive();
-        void InActive();
+        void Activate();
+        void Deactivate();
     }
 }
