@@ -914,7 +914,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  CurrentValue: 0
+  _currentValue: 0
 --- !u!1 &2496815011543951867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,7 +1358,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  CurrentValue: 0
+  _currentValue: 0
 --- !u!1 &3085805151476201946
 GameObject:
   m_ObjectHideFlags: 0

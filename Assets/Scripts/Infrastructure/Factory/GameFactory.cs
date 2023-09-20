@@ -1,5 +1,4 @@
-﻿using Windows;
-using Ammo.Ammunition;
+﻿using Ammo.Ammunition;
 using CameraLogic;
 using EnemyLogic;
 using HeroLogic;

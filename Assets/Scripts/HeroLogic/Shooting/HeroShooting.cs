@@ -16,13 +16,13 @@ namespace HeroLogic.Shooting
         {
             _hero = hero;
             input.PushShoot(OnShoot);
-         //   _abilitySelector.Construct(input, pool, cameraFollow);
+            _abilitySelector.Construct(input, pool, cameraFollow);
         }
         
         private void OnShoot()
         {
             _hero.TakeDamage(40);
-            //            TryGetAbility().Cast();
+            TryGetAbility().Cast();
         }
         
 

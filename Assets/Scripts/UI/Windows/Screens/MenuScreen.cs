@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.CompilerServices;
 using Plugins.MonoCache;
 using Services.Inputs;
 using Services.SaveLoad;
@@ -16,28 +14,44 @@ namespace UI.Windows.Screens
         [SerializeField] private Button _buttonReset;
         [SerializeField] private Button _buttonExit;
         [SerializeField] private Button _buttonSettings;
+        [SerializeField] private Button _buttonAuthorization;
+        [SerializeField] private Button _buttonLeaderboard;
         [SerializeField] private Button _buttonBack;
-        [SerializeField] private Button _buttonSound;
         [SerializeField] private GameObject _panel;
+        [SerializeField] private GameObject _panelSettings;
         
-        private Canvas _canvasToMove;
-        private int _currentIndex;
-        private void OnValidate()
+        private AuthorizationScreen _authorizationScreen;
+        private  LeaderboardScreen _leaderboardScreen;
+        private IInputService _input;
+        public void Construct(IInputService input, AuthorizationScreen authorizationScreen,
+            LeaderboardScreen leaderboardScreen)
         {
-            _canvasToMove= GetComponent<Canvas>();
-        }
-
-        public void Construct(ISave save, IInputService input)
-        {
+            _input = input;
+            _authorizationScreen=authorizationScreen;
+            _leaderboardScreen=leaderboardScreen;
             _buttonResume.onClick.AddListener(() => OnClickResume());
             _buttonSettings.onClick.AddListener(() => OnClickSettings());
-            _buttonSound.onClick.AddListener(() => OnClickSound());
             _buttonBack.onClick.AddListener(() => OnClickBack());
+            _buttonAuthorization.onClick.AddListener(()=>OnClickAuthorization());
+            _buttonLeaderboard.onClick.AddListener(()=>OnClickLeaderboard());
+        }
+
+        private void OnClickLeaderboard()
+        {
+            _leaderboardScreen.Activate();
+            Deactivate();
+        }
+
+        private void OnClickAuthorization()
+        {
+            _authorizationScreen.Activate();
+            Deactivate();
         }
 
         private void OnClickBack()
         {
-            _panel.SetActive(false);
+            _panel.SetActive(true);
+            _panelSettings.SetActive(false);
         }
 
         private void OnClickResume()
@@ -47,68 +61,28 @@ namespace UI.Windows.Screens
 
         public void Activate()
          {       
+             _input.OffControls();
              Time.timeScale = 0;
              gameObject.SetActive(true); 
-             _currentIndex = _canvasToMove.transform.GetSiblingIndex();
-             _canvasToMove.transform.SetSiblingIndex(0);
          }
 
         public void Deactivate()
         {
+            _input.OnControls();
             Time.timeScale = 1;
-            gameObject.SetActive(true);
-            _canvasToMove.transform.SetSiblingIndex(_currentIndex);
+            gameObject.SetActive(false);
         }
 
 
         private void OnClickSettings()
         {
-            _panel.SetActive(true);
-        }
-       
-        private void OnClickSound()
-        {
-            throw new System.NotImplementedException();
+            _panel.SetActive(false);
+            _panelSettings.SetActive(true);
         }
 
-        // public void Select()
-        // {
-        //     InActive();
-        //     _tank.ResetCountShots();
-        //     _obstaclePattern.ResetCountCollision();
-        //     _tank.OnActive();
-        //     _towerBuilder.LaunchBuild();
-        //     
-        //     Time.timeScale = 1;
-        // }
-        //
-        // public void SelectSound()
-        // {
-        //     if (_toggleSound.isOn) 
-        //         _soundOperator.UnMute();
-        //     
-        //     if (!_toggleSound.isOn) 
-        //         _soundOperator.Mute();
-        //     
-        //     ChangeIconSound(_toggleSound.isOn);
-        // }
-        //
-        // public void SelectLeaderBoard()
-        // {
-        //     _leaderboardScreen.OnActive();
-        //     InActive();
-        // }
-        //
-        //
-        //
-        // public void InActive() =>
-        //     gameObject.SetActive(false);
-        //
-        //
-        // private void ChangeIconSound(bool flag)
-        // {
-        //     _activeSoundIcon.gameObject.SetActive(flag);
-        //     _inActiveSoundIcon.gameObject.SetActive(!flag);
-        // }
+        public void OnSelectedSoundButton()
+        {
+            print("SelectSoundButton");
+        }
     }
 }

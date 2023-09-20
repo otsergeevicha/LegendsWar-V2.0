@@ -6,7 +6,7 @@ using UI.Stats;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Windows.Screens
+namespace UI.Windows.Screens
 {
     public class HudScreen : MonoCache, IWindow
     {
@@ -22,9 +22,19 @@ namespace Windows.Screens
         {
             _statBar.Construct(save);
             
-            _selectedMenuButton.onClick.AddListener(() => OnSelectedMenuButton());
-            _selectedSoundButton.onClick.AddListener(() => OnSelectedSoundButton());
-            //_healthBar.Construct(save);
+            _selectedMenuButton.onClick.AddListener(() => OnSelectedMenu());
+            _selectedSoundButton.onClick.AddListener(() => OnSelectedSound());
+        }
+        
+        private void OnSelectedMenu()
+        {
+            OnSelectedMenuButton?.Invoke();
+        }
+        
+        private void OnSelectedSound()
+        {
+            
+            OnSelectedSoundButton?.Invoke();
         }
         
         public void Activate() => 

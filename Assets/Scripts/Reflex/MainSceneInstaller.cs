@@ -1,5 +1,4 @@
-﻿using Windows;
-using CameraLogic;
+﻿using CameraLogic;
 using HeroLogic;
 using Infrastructure.Factory.Pools;
 using Plugins.MonoCache;

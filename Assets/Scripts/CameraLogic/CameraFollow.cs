@@ -37,7 +37,7 @@ namespace CameraLogic
             
             _zoomFollow.gameObject.SetActive(false);
             _input = input;
-            SetCursorState(_cursorLocked);
+          //  SetCursorState(_cursorLocked);
             _input.PushZoom(OnZoom);
         }
     
