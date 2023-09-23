@@ -1,4 +1,5 @@
-﻿using CameraLogic;
+﻿using System;
+using CameraLogic;
 using Infrastructure.Factory.Pools;
 using Plugins.MonoCache;
 using Services.Inputs;
@@ -10,14 +11,16 @@ namespace AbilityLogic
     {
         [SerializeField] private Ability[] _abilities;
 
+        public event Action<int> AbilityChanged;
+        
         private IInputService _input;
 
-        public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow)
+        public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow, Animator animator)
         {
              _input = input;
             
             for (int i = 0; i < _abilities.Length; i++) 
-                _abilities[i].Construct(_input, pool, cameraFollow);
+                _abilities[i].Construct(_input, pool, cameraFollow, animator);
             
             SelectAbility((int)IndexAbility.Sword);
             
@@ -33,6 +36,8 @@ namespace AbilityLogic
         {
             for (int i = 0; i < _abilities.Length; i++)
                 _abilities[i].gameObject.SetActive(_abilities[i].GetIndexAbility() == selectIndexAbility);
+            
+            AbilityChanged?.Invoke(selectIndexAbility);
         }
 
         public Ability[] GetAbilities() => 

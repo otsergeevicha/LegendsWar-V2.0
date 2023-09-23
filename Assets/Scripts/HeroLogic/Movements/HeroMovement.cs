@@ -1,4 +1,5 @@
 ﻿using System;
+using AbilityLogic;
 using Plugins.MonoCache;
 using Services.Inputs;
 using UnityEngine;
@@ -14,9 +15,9 @@ namespace HeroLogic.Movements
     public class HeroMovement : MonoCache
     {
         [SerializeField] private CharacterController _controller;
-        [SerializeField] private Animator _animator;
         [SerializeField] private Hero _hero;
     
+        private Animator _animator;
         private IInputService _input;
         private float _rotationVelocity;
 
@@ -29,7 +30,6 @@ namespace HeroLogic.Movements
         private void OnValidate()
         {
             _controller = Get<CharacterController>();
-            _animator = Get<Animator>();
             _hero = Get<Hero>();
         }
 
@@ -45,13 +45,19 @@ namespace HeroLogic.Movements
 
             if (_input.MoveAxis.sqrMagnitude > Single.Epsilon)
             {
-                 _animator.SetBool(Constants.HeroRunHash, true);
-        
+                _animator.SetBool(
+                    _hero.GetCurrentAbility == (int)IndexAbility.Sword
+                        ? Constants.HeroSwordRunHash
+                        : Constants.HeroWithoutSwordRunHash, true);
+
                 movementVector = new Vector3(_input.MoveAxis.x, 0.0f, _input.MoveAxis.y).normalized;
                 transform.forward = movementVector;
             }
             else
-                _animator.SetBool(Constants.HeroRunHash, false);
+            {
+                _animator.SetBool(Constants.HeroSwordRunHash, false);
+                _animator.SetBool(Constants.HeroWithoutSwordRunHash, false);
+            }
 
             movementVector += Physics.gravity;
 

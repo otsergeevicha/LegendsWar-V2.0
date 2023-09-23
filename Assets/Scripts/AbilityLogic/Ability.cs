@@ -2,6 +2,7 @@
 using Infrastructure.Factory.Pools;
 using Plugins.MonoCache;
 using Services.Inputs;
+using UnityEngine;
 
 namespace AbilityLogic
 {
@@ -16,6 +17,6 @@ namespace AbilityLogic
     {
         public abstract void Cast();
         public abstract int GetIndexAbility();
-        public abstract void Construct(IInputService inputService, Pool pool, CameraFollow cameraFollow);
+        public abstract void Construct(IInputService inputService, Pool pool, CameraFollow cameraFollow, Animator animator);
     }
 }

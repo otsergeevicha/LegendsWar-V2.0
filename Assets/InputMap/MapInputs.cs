@@ -216,7 +216,7 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""eb85c581-6d39-45e5-8470-3ac0ffb6028f"",
-                    ""path"": ""<Keyboard>/3"",
+                    ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
@@ -293,7 +293,7 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""63632b69-46ec-4daa-b52f-eca67e58bc5c"",
-                    ""path"": ""<Keyboard>/2"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
@@ -315,7 +315,7 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1a291d95-aa64-47ce-a592-68d758524d65"",
-                    ""path"": ""<Keyboard>/4"",
+                    ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",

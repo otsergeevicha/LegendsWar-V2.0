@@ -18,11 +18,14 @@ namespace HeroLogic
         [SerializeField] private HeroShooting _heroShooting;
         [SerializeField] private RootCamera _rootCamera;
 
+        [SerializeField] private Animator _animator;
+        
         public int Health => _health.ReturnHealth();
+        public int GetCurrentAbility => _heroShooting.GetIndexAbility();
         
         private HeroHealth _health;
         private ISave _save;
-        
+
         public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow,ISave save)
         {
             _save = save;
@@ -30,13 +33,14 @@ namespace HeroLogic
             _health.Died += GameOver;
 
             _heroMovement.Construct(input);
-            _heroShooting.Construct(input, pool, cameraFollow,this);
+            _heroShooting.Construct(input, pool, cameraFollow, _animator,this);
             _save.AccessProgress()._characterAttributes.RecordHealth(Health);
            // _save.AccessProgress().DataStats.RecordEnergy(Energy);
         }
 
         private void OnValidate()
         {
+            _animator = Get<Animator>();
             _heroMovement = Get<HeroMovement>();
             _heroShooting = Get<HeroShooting>();
         }

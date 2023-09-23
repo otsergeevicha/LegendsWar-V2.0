@@ -25,7 +25,7 @@ namespace AbilityLogic
         public override int GetIndexAbility() =>
             (int)IndexAbility.Grenade;
 
-        public override void Construct(IInputService inputService, Pool pool, CameraFollow cameraFollow)
+        public override void Construct(IInputService inputService, Pool pool, CameraFollow cameraFollow, Animator animator)
         {
             _pool = pool;
             _camera = cameraFollow.GetCameraMain();

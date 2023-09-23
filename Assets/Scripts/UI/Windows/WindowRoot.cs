@@ -20,8 +20,8 @@ namespace UI.Windows
         
         public void Construct(ISave save, IInputService input, IWallet wallet, IGameFactory gameFactory)
         {
-             _menuScreen.Construct( input,_authorizationScreen ,_leaderboardScreen);
              _hudScreen.Construct(save);
+             _menuScreen.Construct( input,_authorizationScreen ,_leaderboardScreen);
              _hudScreen.OnSelectedMenuButton += () => _menuScreen.Activate();
              _hudScreen.OnSelectedSoundButton += () => _menuScreen.OnSelectedSoundButton();
              _victoryScreen.Construct(input);

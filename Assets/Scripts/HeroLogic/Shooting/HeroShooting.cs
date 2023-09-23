@@ -11,23 +11,33 @@ namespace HeroLogic.Shooting
     public class HeroShooting : MonoCache
     {
         [SerializeField] private AbilitySelector _abilitySelector;
+        
         private Hero _hero;
-        public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow, Hero hero = null)
+        private int _currentIndexAbility = (int)IndexAbility.Sword;
+
+        public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow, Animator animator, Hero hero = null)
         {
             _hero = hero;
             input.PushShoot(OnShoot);
-            _abilitySelector.Construct(input, pool, cameraFollow);
+            _abilitySelector.Construct(input, pool, cameraFollow, animator);
+
+            _abilitySelector.AbilityChanged += SetCurrentAbility;
         }
-        
-        private void OnShoot()
-        {
-            _hero.TakeDamage(40);
+
+        protected override void OnDisabled() => 
+            _abilitySelector.AbilityChanged -= SetCurrentAbility;
+
+        public int GetIndexAbility() => 
+            _currentIndexAbility;
+
+        private void OnShoot() => 
             TryGetAbility().Cast();
-        }
-        
 
         private Ability TryGetAbility() =>
-            _abilitySelector.GetAbilities().FirstOrDefault(ability =>
-                ability.isActiveAndEnabled);
+            _abilitySelector.GetAbilities()
+                .FirstOrDefault(ability => ability.isActiveAndEnabled);
+
+        private void SetCurrentAbility(int newIndex) => 
+            _currentIndexAbility = newIndex;
     }
 }

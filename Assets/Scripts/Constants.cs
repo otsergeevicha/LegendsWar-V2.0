@@ -19,7 +19,8 @@ public static class Constants
     public const int HeroSpeed = 4;
     
     //animator hero
-    public static readonly int HeroRunHash = Animator.StringToHash("Run");
+    public static readonly int HeroSwordRunHash = Animator.StringToHash("SwordRun");
+    public static readonly int HeroWithoutSwordRunHash = Animator.StringToHash("WithoutSwordRun");
     
     //regeneration
     public const float DelayRegeneration = .5f;
