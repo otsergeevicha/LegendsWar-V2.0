@@ -11,7 +11,8 @@ namespace AbilityLogic
         public override int GetIndexAbility() =>
             (int)IndexAbility.Ultimate;
 
-        public override void Construct(IInputService inputService, Pool pool, CameraFollow cameraFollow, Animator animator) {}
+        public override void Construct(IInputService inputService, Pool pool, CameraFollow cameraFollow,
+            Animator animator) {}
 
         public override void Cast() {}
     }

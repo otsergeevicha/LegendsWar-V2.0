@@ -5,17 +5,14 @@ using UnityEngine;
 
 namespace AbilityLogic
 {
-    enum CombinationStage
-    {
-        OutwardSlash,
-        InwardSlash,
-        SwordCombo
-    }
-
     public class SwordAbility : Ability
     {
         private Animator _animator;
-        private int _currentCombination = (int)CombinationStage.OutwardSlash;
+        
+        private int _onClicks;
+        private float _lastClickedTime;
+        private readonly float _maxComboDelay = .7f;
+        private float _nextFireTime;
 
         public override void Construct(IInputService inputService, Pool pool, CameraFollow cameraFollow,
             Animator animator)
@@ -23,28 +20,37 @@ namespace AbilityLogic
             _animator = animator;
         }
 
+        protected override void UpdateCached()
+        {
+            if (Time.time - _lastClickedTime > _maxComboDelay) 
+                _onClicks = 0;
+        }
+
         public override int GetIndexAbility() =>
             (int)IndexAbility.Sword;
 
-        public override void Cast() =>
-            _animator.SetTrigger(CurrentCombination());
-
-        private string CurrentCombination()
+        public override void Cast()
         {
-            return _currentCombination switch
+            if (Time.time > _nextFireTime)
             {
-                (int)CombinationStage.OutwardSlash =>
-                    CombinationStage.OutwardSlash.ToString(),
-                (int)CombinationStage.InwardSlash =>
-                    CombinationStage.InwardSlash.ToString(),
-                (int)CombinationStage.SwordCombo =>
-                    CombinationStage.SwordCombo.ToString(),
-                _ => CombinationStage.OutwardSlash.ToString()
-            };
+                _lastClickedTime = Time.time;
+                _onClicks++;
+
+                if (_onClicks == 1) 
+                    _animator.SetTrigger(Constants.OutwardSlashHash);
+
+                if (_onClicks >= 2 && CheckStatusAnimation())
+                    _animator.SetTrigger(Constants.InwardSlashHash);
+
+                if (_onClicks >= 3 && CheckStatusAnimation())
+                {
+                    _animator.SetTrigger(Constants.SwordComboHash);
+                    _onClicks = 0;
+                }
+            }
         }
-    }
-    
-    public class ComboAttackModule
-    {
+
+        private bool CheckStatusAnimation() => 
+            _animator.GetCurrentAnimatorStateInfo(0).normalizedTime > .4f;
     }
 }

@@ -1,4 +1,5 @@
-﻿using CameraLogic;
+﻿using System;
+using CameraLogic;
 using HeroLogic.Movements;
 using HeroLogic.Shooting;
 using Infrastructure.Factory.Pools;
@@ -19,24 +20,29 @@ namespace HeroLogic
         [SerializeField] private RootCamera _rootCamera;
 
         [SerializeField] private Animator _animator;
-        
-        public int Health => _health.ReturnHealth();
-        public int GetCurrentAbility => _heroShooting.GetIndexAbility();
-        
+
         private HeroHealth _health;
         private ISave _save;
 
-        public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow,ISave save)
+        public event Action SwordAnimationEnded;
+
+        public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow, ISave save)
         {
             _save = save;
             _health = new HeroHealth(Constants.HeroMaxHealth);
             _health.Died += GameOver;
 
-            _heroMovement.Construct(input);
-            _heroShooting.Construct(input, pool, cameraFollow, _animator,this);
+            _heroMovement.Construct(input, _animator, this);
+            _heroShooting.Construct(input, pool, cameraFollow, _animator, this);
             _save.AccessProgress()._characterAttributes.RecordHealth(Health);
-           // _save.AccessProgress().DataStats.RecordEnergy(Energy);
+            // _save.AccessProgress().DataStats.RecordEnergy(Energy);
         }
+        
+        public int Health => 
+            _health.ReturnHealth();
+        
+        public int GetCurrentAbility => 
+            _heroShooting.GetIndexAbility();
 
         private void OnValidate()
         {
@@ -45,16 +51,16 @@ namespace HeroLogic
             _heroShooting = Get<HeroShooting>();
         }
 
-        protected override void OnDisabled() => 
+        protected override void OnDisabled() =>
             _health.Died -= GameOver;
 
-        public Transform GetCameraRoot() => 
+        public Transform GetCameraRoot() =>
             _rootCamera.transform;
 
         public void TakeDamage(int damage)
         {
             _health.ApplyDamage(damage);
-            
+
             _save.AccessProgress()._characterAttributes.RecordHealth(Health);
         }
 
@@ -62,5 +68,8 @@ namespace HeroLogic
         {
             Time.timeScale = 0;
         }
+
+        private void EndAnimation() => 
+            SwordAnimationEnded?.Invoke();
     }
 }

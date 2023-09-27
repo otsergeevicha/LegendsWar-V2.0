@@ -3,9 +3,6 @@ using AbilityLogic;
 using Plugins.MonoCache;
 using Services.Inputs;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.OnScreen;
 
 namespace HeroLogic.Movements
 {
@@ -15,22 +12,24 @@ namespace HeroLogic.Movements
     public class HeroMovement : MonoCache
     {
         [SerializeField] private CharacterController _controller;
-        [SerializeField] private Hero _hero;
-    
+        
+        private Hero _hero;
         private Animator _animator;
+        
         private IInputService _input;
         private float _rotationVelocity;
 
-        public void Construct(IInputService input)
+        public void Construct(IInputService input, Animator animator, Hero hero)
         {
             _input = input;
+            _hero = hero;
             _input.OnControls();
+            _animator = animator;
         }
 
         private void OnValidate()
         {
             _controller = Get<CharacterController>();
-            _hero = Get<Hero>();
         }
 
         protected override void UpdateCached() =>

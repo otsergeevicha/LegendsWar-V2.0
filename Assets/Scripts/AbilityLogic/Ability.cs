@@ -1,4 +1,5 @@
 ﻿using CameraLogic;
+using HeroLogic;
 using Infrastructure.Factory.Pools;
 using Plugins.MonoCache;
 using Services.Inputs;
@@ -17,6 +18,7 @@ namespace AbilityLogic
     {
         public abstract void Cast();
         public abstract int GetIndexAbility();
-        public abstract void Construct(IInputService inputService, Pool pool, CameraFollow cameraFollow, Animator animator);
+        public abstract void Construct(IInputService inputService, Pool pool, CameraFollow cameraFollow,
+            Animator animator);
     }
 }

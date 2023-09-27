@@ -15,7 +15,7 @@ namespace HeroLogic.Shooting
         private Hero _hero;
         private int _currentIndexAbility = (int)IndexAbility.Sword;
 
-        public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow, Animator animator, Hero hero = null)
+        public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow, Animator animator, Hero hero)
         {
             _hero = hero;
             input.PushShoot(OnShoot);

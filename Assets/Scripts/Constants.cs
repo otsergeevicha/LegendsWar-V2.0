@@ -22,6 +22,10 @@ public static class Constants
     public static readonly int HeroSwordRunHash = Animator.StringToHash("SwordRun");
     public static readonly int HeroWithoutSwordRunHash = Animator.StringToHash("WithoutSwordRun");
     
+    public static readonly int OutwardSlashHash = Animator.StringToHash("OutwardSlash");
+    public static readonly int InwardSlashHash = Animator.StringToHash("InwardSlash");
+    public static readonly int SwordComboHash = Animator.StringToHash("SwordCombo");
+    
     //regeneration
     public const float DelayRegeneration = .5f;
     public const int DelayRegenerationMagazine = 5000;

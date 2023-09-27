@@ -60,7 +60,7 @@ public partial class @MapInputs: IInputActionCollection2, IDisposable
                     ""id"": ""5c0584e7-80f0-4572-802a-874b1094d4b8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=1)"",
                     ""initialStateCheck"": false
                 },
                 {
