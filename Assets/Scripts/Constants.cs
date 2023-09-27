@@ -26,20 +26,18 @@ public static class Constants
     public static readonly int InwardSlashHash = Animator.StringToHash("InwardSlash");
     public static readonly int SwordComboHash = Animator.StringToHash("SwordCombo");
     
+    public static readonly int UltimateHash = Animator.StringToHash("Ultimate");
+    
     //regeneration
     public const float DelayRegeneration = .5f;
     public const int DelayRegenerationMagazine = 5000;
-
-    //Firearms
-    public const int DelayShots = 100;
-    public const int FirearmsMagazineSize = 20;
 
     //grenade
     public const float RadiusExplosion = 10f;
     public const float ForceExplosion = 500f;
     public const float AngleInDegrees = 45f;
     public const int GrenadeDamage = 50;
-    public const int GrenadeMagazineSize = 1;
+    public const int GrenadeMagazineSize = 5;
 
     //bullet
     public const int BulletDamage = 50;
