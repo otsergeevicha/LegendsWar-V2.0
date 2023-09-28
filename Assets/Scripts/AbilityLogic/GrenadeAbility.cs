@@ -2,7 +2,6 @@
 using AbilityLogic.Catridges;
 using Ammo.Ammunition;
 using CameraLogic;
-using HeroLogic.Shooting;
 using Infrastructure.Factory.Pools;
 using Services.Inputs;
 using UnityEngine;
@@ -63,7 +62,7 @@ namespace AbilityLogic
                 grenade.gameObject.SetActive(true);
                 grenade.transform.position = _spawnPointGrenade.position;
                 grenade.transform.LookAt(raycastHit.point);
-                grenade.Throw(_spawnPointGrenade.forward * speed);
+                grenade.Throw(raycastHit.point * speed * 4 * Time.deltaTime);
 
                 _magazine.Spend();
             }
