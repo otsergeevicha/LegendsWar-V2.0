@@ -17,8 +17,6 @@ namespace HeroLogic.Shooting
         private Hero _hero;
         private int _currentIndexAbility = (int)IndexAbility.Sword;
 
-        public event Action Abandoned;
-
         public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow, Animator animator, Hero hero)
         {
             _hero = hero;
