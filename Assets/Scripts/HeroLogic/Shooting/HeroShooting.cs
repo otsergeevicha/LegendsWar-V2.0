@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using AbilityLogic;
 using CameraLogic;
 using Infrastructure.Factory.Pools;
@@ -11,9 +12,12 @@ namespace HeroLogic.Shooting
     public class HeroShooting : MonoCache
     {
         [SerializeField] private AbilitySelector _abilitySelector;
+        [SerializeField] private GrenadeAbility _grenadeAbility;
         
         private Hero _hero;
         private int _currentIndexAbility = (int)IndexAbility.Sword;
+
+        public event Action Abandoned;
 
         public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow, Animator animator, Hero hero)
         {
@@ -23,7 +27,7 @@ namespace HeroLogic.Shooting
 
             _abilitySelector.AbilityChanged += SetCurrentAbility;
         }
-
+        
         protected override void OnDisabled() => 
             _abilitySelector.AbilityChanged -= SetCurrentAbility;
 
@@ -33,6 +37,9 @@ namespace HeroLogic.Shooting
         private void OnShoot() => 
             TryGetAbility().Cast();
 
+        private void Throw() =>
+            _grenadeAbility.Throw();
+        
         private Ability TryGetAbility() =>
             _abilitySelector.GetAbilities()
                 .FirstOrDefault(ability => ability.isActiveAndEnabled);

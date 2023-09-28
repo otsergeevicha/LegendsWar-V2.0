@@ -27,6 +27,7 @@ public static class Constants
     public static readonly int SwordComboHash = Animator.StringToHash("SwordCombo");
     
     public static readonly int UltimateHash = Animator.StringToHash("Ultimate");
+    public static readonly int CastGrenadeHash = Animator.StringToHash("CastGrenade");
     
     //regeneration
     public const float DelayRegeneration = .5f;
@@ -38,6 +39,9 @@ public static class Constants
     public const float AngleInDegrees = 45f;
     public const int GrenadeDamage = 50;
     public const int GrenadeMagazineSize = 5;
+    
+    //ultimate
+    public const int UltimateMagazineSize = 1;
 
     //bullet
     public const int BulletDamage = 50;

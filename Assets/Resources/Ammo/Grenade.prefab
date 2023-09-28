@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4112731978707796656}
   - component: {fileID: 660516718239569207}
   - component: {fileID: 5974395590941311054}
-  m_Layer: 0
+  - component: {fileID: 1677603531235908019}
+  m_Layer: 6
   m_Name: Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,6 +74,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c88c155ef84c3c9ae070f256b43510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _explosionEffect: {fileID: 404992, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+  _rigidbody: {fileID: 660516718239569207}
+--- !u!135 &1677603531235908019
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3656761391203175133}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2056774717063387340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81,9 +105,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4112731978707796656}
     m_Modifications:
+    - target: {fileID: 1138359323233740, guid: 14a334c03c1cccd458efe9a3d4fbc240, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1258406917094090, guid: 14a334c03c1cccd458efe9a3d4fbc240, type: 3}
       propertyPath: m_Name
       value: GrenadeMissileFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258406917094090, guid: 14a334c03c1cccd458efe9a3d4fbc240, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1344952921549134, guid: 14a334c03c1cccd458efe9a3d4fbc240, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4279621146394558, guid: 14a334c03c1cccd458efe9a3d4fbc240, type: 3}
       propertyPath: m_LocalPosition.x

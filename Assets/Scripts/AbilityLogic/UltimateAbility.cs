@@ -1,4 +1,5 @@
-﻿using CameraLogic;
+﻿using AbilityLogic.Catridges;
+using CameraLogic;
 using Cysharp.Threading.Tasks;
 using Infrastructure.Factory.Pools;
 using Services.Inputs;
@@ -11,6 +12,7 @@ namespace AbilityLogic
         [SerializeField] private ParticleSystem _particleUltimateSword;
 
         private Animator _animator;
+        private MagazineUltimate _magazine;
 
         public override int GetIndexAbility() =>
             (int)IndexAbility.Ultimate;
@@ -19,15 +21,23 @@ namespace AbilityLogic
             Animator animator)
         {
             _animator = animator;
+            _magazine = new MagazineUltimate(Constants.UltimateMagazineSize);
         }
 
         public override void Cast()
         {
-            _particleUltimateSword.gameObject.SetActive(false);
-            _particleUltimateSword.gameObject.SetActive(true);
+            if (_magazine.Check())
+            {
+                _particleUltimateSword.gameObject.SetActive(false);
+                _particleUltimateSword.gameObject.SetActive(true);
             
-            _animator.SetTrigger(Constants.UltimateHash);
-            LaunchEffect().Forget();
+                _animator.SetTrigger(Constants.UltimateHash);
+                LaunchEffect().Forget();
+                
+                _magazine.Spend();
+            }
+                
+            _magazine.Shortage();
         }
 
         private async UniTaskVoid LaunchEffect()

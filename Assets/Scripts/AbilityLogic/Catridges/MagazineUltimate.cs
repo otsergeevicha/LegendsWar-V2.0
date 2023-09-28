@@ -3,13 +3,13 @@ using Services.Catridges;
 
 namespace AbilityLogic.Catridges
 {
-    public class MagazineArch : IMagazine
+    public class MagazineUltimate : IMagazine
     {
         private readonly HeroRegeneration _regeneration;
         private readonly int _maxSize;
         private int _size;
 
-        public MagazineArch(int size)
+        public MagazineUltimate(int size)
         {
             _size = size;
             _maxSize = size;

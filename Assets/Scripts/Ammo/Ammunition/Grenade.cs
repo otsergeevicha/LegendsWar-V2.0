@@ -1,4 +1,5 @@
-﻿using EnemyLogic;
+﻿using System;
+using EnemyLogic;
 using Plugins.MonoCache;
 using UnityEngine;
 
@@ -8,9 +9,16 @@ namespace Ammo.Ammunition
     public class Grenade : MonoCache
     {
         [SerializeField] private Transform _explosionEffect;
+        [SerializeField] private Rigidbody _rigidbody;
         
         private Collider[] _overlappedColliders = new Collider[30];
-        
+
+        public void Throw(Vector3 forward) => 
+            _rigidbody.velocity = forward;
+
+        private void OnValidate() => 
+            _rigidbody = Get<Rigidbody>();
+
         private void OnTriggerEnter(Collider _)
         {
             _overlappedColliders = Physics.OverlapSphere(transform.position, Constants.RadiusExplosion);
