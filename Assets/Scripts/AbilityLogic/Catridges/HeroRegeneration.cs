@@ -24,8 +24,8 @@ namespace AbilityLogic.Catridges
             _isWaiting = true;
             await UniTask.Delay(delayRegeneration);
             _isWaiting = false;
-            
-            _ = Replenishment();
+
+           _ = Replenishment();
         }
         
         private async UniTaskVoid Replenishment()

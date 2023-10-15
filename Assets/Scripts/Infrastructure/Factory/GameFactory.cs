@@ -1,10 +1,13 @@
 ﻿using Ammo.Ammunition;
 using CameraLogic;
-using EnemyLogic;
+using Enemies;
+using Enemies.BossLogic;
 using HeroLogic;
 using Infrastructure.Factory.Pools;
+using Reflex;
 using Services.Assets;
 using Services.Factory;
+using SpawnerModule;
 using UI.Windows;
 
 namespace Infrastructure.Factory
@@ -36,12 +39,16 @@ namespace Infrastructure.Factory
             _assetsProvider.InstantiateEntity(Constants.GrenadePath)
                 .GetComponent<Grenade>();
 
-        public Arrow CreateArrow() =>
-            _assetsProvider.InstantiateEntity(Constants.ArrowPath)
-                .GetComponent<Arrow>();
-
         public Enemy CreateEnemy(string typeEnemy) =>
             _assetsProvider.InstantiateEntity(typeEnemy)
                 .GetComponent<Enemy>();
+
+        public Boss CreateBoss(string typeBoss) =>
+            _assetsProvider.InstantiateEntity(typeBoss)
+                .GetComponent<Boss>();
+
+        public EnemySpawner CreateEnemySpawner() =>
+            _assetsProvider.InstantiateEntity(Constants.EnemySpawnerPath)
+                .GetComponent<EnemySpawner>();
     }
 }

@@ -1,8 +1,11 @@
 ﻿using Ammo.Ammunition;
 using CameraLogic;
-using EnemyLogic;
+using Enemies;
+using Enemies.BossLogic;
 using HeroLogic;
 using Infrastructure.Factory.Pools;
+using Reflex;
+using SpawnerModule;
 using UI.Windows;
 
 namespace Services.Factory
@@ -15,7 +18,8 @@ namespace Services.Factory
 
         Pool CreatePool();
         Grenade CreateGrenade();
-        Arrow CreateArrow();
         Enemy CreateEnemy(string typeEnemy);
+        Boss CreateBoss(string typeBoss);
+        EnemySpawner CreateEnemySpawner();
     }
 }

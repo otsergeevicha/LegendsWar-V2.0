@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Ammo.Ammunition;
+using Enemies.BossLogic;
 using Plugins.MonoCache;
 using Services.Factory;
 
@@ -8,7 +9,8 @@ namespace Infrastructure.Factory.Pools
     public class Pool : MonoCache
     {
         private GrenadePool _grenadePool;
-        private ArrowPool _arrowPool;
+        private BossPool _bossPool;
+        
         private IGameFactory _factory;
 
         public void Construct(IGameFactory factory)
@@ -16,15 +18,15 @@ namespace Infrastructure.Factory.Pools
             _factory = factory;
             
             _grenadePool = new GrenadePool(_factory);
-            _arrowPool = new ArrowPool(_factory);
+            _bossPool = new BossPool(_factory);
         }
-
-        public Arrow TryGetArrow() =>
-            _arrowPool.GetArrows().FirstOrDefault(arrow =>
-                arrow.isActiveAndEnabled == false);
 
         public Grenade TryGetGrenade() =>
             _grenadePool.GetGrenades().FirstOrDefault(grenade =>
                 grenade.isActiveAndEnabled == false);
+        
+        public Boss TryGetBoss(int idBoss) =>
+        _bossPool.GetBoss().FirstOrDefault(boss =>
+            boss.GetId() == idBoss);
     }
 }

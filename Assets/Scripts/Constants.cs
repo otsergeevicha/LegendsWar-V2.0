@@ -12,7 +12,18 @@ public static class Constants
     public const string WindowRootPath = "Canvases/WindowRoot";
     public const string CameraPath = "Camera/MainCamera";
     public const string GrenadePath = "Ammo/Grenade";
-    public const string ArrowPath = "Ammo/Arrow";
+    public const string EnemySpawnerPath = "Spawner/EnemySpawner";
+    
+    public const string BatPath = "Bosses/Bat";
+    public const string DragonPath = "Bosses/Dragon";
+    public const string EvilMagePath = "Bosses/EvilMage";
+    public const string GolemPath = "Bosses/Golem";
+    public const string MonsterPlantPath = "Bosses/MonsterPlant";
+    public const string OrcPath = "Bosses/Orc";
+    public const string SkeletonPath = "Bosses/Skeleton";
+    public const string SlimePath = "Bosses/Slime";
+    public const string SpiderPath = "Bosses/Spider";
+    public const string TurtleShellPath = "Bosses/TurtleShell";
 
     //hero
     public const int HeroMaxHealth = 100;
@@ -49,7 +60,6 @@ public static class Constants
 
     //pool
     public const int CountSpawnGrenade = 20;
-    public const int CountSpawnArrows = 150;
 
     //check device
     public const string KeyboardMouse = "KeyboardMouse";

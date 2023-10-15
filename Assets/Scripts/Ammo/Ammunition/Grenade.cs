@@ -1,5 +1,5 @@
 ﻿using System;
-using EnemyLogic;
+using Enemies;
 using Plugins.MonoCache;
 using UnityEngine;
 

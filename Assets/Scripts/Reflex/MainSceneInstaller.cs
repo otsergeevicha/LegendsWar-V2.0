@@ -7,6 +7,7 @@ using Services.Factory;
 using Services.Inputs;
 using Services.SaveLoad;
 using Services.Wallet;
+using SpawnerModule;
 using UI.Windows;
 
 namespace Reflex
@@ -27,11 +28,13 @@ namespace Reflex
             CameraFollow cameraFollow = gameFactory.CreateCamera();
             WindowRoot windowRoot = gameFactory.CreateWindowRoot();
             Hero hero = gameFactory.CreateHero();
+            EnemySpawner enemySpawner = gameFactory.CreateEnemySpawner();
 
             pool.Construct(gameFactory);
             hero.Construct(input, pool, cameraFollow,save);
             cameraFollow.Construct(input, hero.GetCameraRoot());
             windowRoot.Construct(save,input,wallet,gameFactory);
+            enemySpawner.Construct(pool);
         }
     }
 }
