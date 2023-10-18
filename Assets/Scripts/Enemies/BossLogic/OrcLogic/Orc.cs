@@ -8,5 +8,15 @@ namespace Enemies.BossLogic.OrcLogic
 
         public override int GetId() =>
             (int)BossId.Orc;
+
+        public override void OnActive()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void InActive()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

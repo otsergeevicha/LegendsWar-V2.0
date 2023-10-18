@@ -8,5 +8,15 @@ namespace Enemies.BossLogic.SlimeLogic
 
         public override int GetId() =>
             (int)BossId.Slime;
+
+        public override void OnActive()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void InActive()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,5 +8,15 @@ namespace Enemies.BossLogic.TurtleShellLogic
 
         public override int GetId() =>
             (int)BossId.TurtleShell;
+
+        public override void OnActive()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void InActive()
+        {
+            throw new NotImplementedException();
+        }
     }
 } 

@@ -30,8 +30,8 @@ namespace Reflex
             Hero hero = gameFactory.CreateHero();
             EnemySpawner enemySpawner = gameFactory.CreateEnemySpawner();
 
-            pool.Construct(gameFactory);
-            hero.Construct(input, pool, cameraFollow,save);
+            pool.Construct(gameFactory, hero);
+            hero.Construct(input, pool, cameraFollow, save);
             cameraFollow.Construct(input, hero.GetCameraRoot());
             windowRoot.Construct(save,input,wallet,gameFactory);
             enemySpawner.Construct(pool);

@@ -8,5 +8,15 @@ namespace Enemies.BossLogic.SpiderLogic
 
         public override int GetId() =>
             (int)BossId.Spider;
+
+        public override void OnActive()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void InActive()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

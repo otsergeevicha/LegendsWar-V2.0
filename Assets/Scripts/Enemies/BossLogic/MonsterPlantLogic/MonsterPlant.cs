@@ -8,5 +8,15 @@ namespace Enemies.BossLogic.MonsterPlantLogic
 
         public override int GetId() =>
             (int)BossId.MonsterPlant;
+
+        public override void OnActive()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void InActive()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,5 +8,15 @@ namespace Enemies.BossLogic.EvilMageLogic
 
         public override int GetId() =>
             (int)BossId.EvilMage;
+
+        public override void OnActive()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void InActive()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

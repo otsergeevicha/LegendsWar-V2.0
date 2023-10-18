@@ -8,5 +8,15 @@ namespace Enemies.BossLogic.DragonLogic
 
         public override int GetId() =>
             (int)BossId.Dragon;
+
+        public override void OnActive()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void InActive()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

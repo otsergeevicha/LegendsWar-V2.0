@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Enemies.BossLogic;
+using HeroLogic;
 using Services.Factory;
 
 namespace Infrastructure.Factory.Pools
@@ -8,7 +9,18 @@ namespace Infrastructure.Factory.Pools
     {
         private readonly List<Boss> _bosses = new ();
 
-        public BossPool(IGameFactory factory)
+        public BossPool(IGameFactory factory, Hero hero)
+        {
+            CompletionArray(factory);
+
+            foreach (Boss boss in _bosses)
+            {
+                boss.Inject(hero.transform);
+                boss.gameObject.SetActive(false);
+            }
+        }
+
+        private void CompletionArray(IGameFactory factory)
         {
             _bosses.Add(factory.CreateBoss(Constants.BatPath));
             _bosses.Add(factory.CreateBoss(Constants.DragonPath));

@@ -8,5 +8,15 @@ namespace Enemies.BossLogic.BatLogic
         
         public override int GetId() =>
             (int)BossId.Bat;
+
+        public override void OnActive()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public override void InActive()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

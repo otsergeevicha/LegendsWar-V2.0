@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Ammo.Ammunition;
 using Enemies.BossLogic;
+using HeroLogic;
 using Plugins.MonoCache;
 using Services.Factory;
 
@@ -13,12 +14,12 @@ namespace Infrastructure.Factory.Pools
         
         private IGameFactory _factory;
 
-        public void Construct(IGameFactory factory)
+        public void Construct(IGameFactory factory, Hero hero)
         {
             _factory = factory;
             
             _grenadePool = new GrenadePool(_factory);
-            _bossPool = new BossPool(_factory);
+            _bossPool = new BossPool(_factory, hero);
         }
 
         public Grenade TryGetGrenade() =>

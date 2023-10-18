@@ -1,5 +1,4 @@
-﻿using System;
-using Plugins.MonoCache;
+﻿using Plugins.MonoCache;
 using Services.Health;
 
 namespace Enemies
@@ -18,12 +17,12 @@ namespace Enemies
         TurtleShell
     }
     
-    public abstract class Enemy : MonoCache, IHealth, ISwitcher
+    public abstract class Enemy : MonoCache, IHealth
     {
         public void TakeDamage(int damage) {}
         
         public abstract int GetId();
-        public void OnActive() {}
-        public void InActive() {}
+        public abstract void OnActive();
+        public abstract void InActive();
     }
 }
