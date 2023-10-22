@@ -1,5 +1,6 @@
 ﻿using System;
 using AbilityLogic;
+using CameraLogic;
 using Plugins.MonoCache;
 using Services.Inputs;
 using UnityEngine;
@@ -18,29 +19,29 @@ namespace HeroLogic.Movements
         
         private IInputService _input;
         private float _rotationVelocity;
+        private Transform _cameraFollow;
 
-        public void Construct(IInputService input, Animator animator, Hero hero)
+        public void Construct(IInputService input, CameraFollow cameraFollow, Animator animator, Hero hero)
         {
             _input = input;
             _hero = hero;
             _input.OnControls();
+            _cameraFollow = cameraFollow.transform;
             _animator = animator;
         }
 
-        private void OnValidate()
-        {
+        private void OnValidate() => 
             _controller = Get<CharacterController>();
-        }
 
-        protected override void UpdateCached() =>
+        protected override void UpdateCached() => 
             BaseLogic();
 
-        protected override void OnDisabled() =>
+        protected override void OnDisabled() => 
             _input.OffControls();
 
         private void BaseLogic()
         {
-            Vector3 movementVector = Vector3.zero;
+            Vector3 movementDirection = Vector3.zero;
 
             if (_input.MoveAxis.sqrMagnitude > Single.Epsilon)
             {
@@ -49,8 +50,14 @@ namespace HeroLogic.Movements
                         ? Constants.HeroSwordRunHash
                         : Constants.HeroWithoutSwordRunHash, true);
 
-                movementVector = new Vector3(_input.MoveAxis.x, 0.0f, _input.MoveAxis.y).normalized;
-                transform.forward = movementVector;
+                Vector3 cameraForward = _cameraFollow.forward;
+                cameraForward.y = 0;
+                cameraForward.Normalize();
+
+                movementDirection = cameraForward * _input.MoveAxis.y + _cameraFollow.right * _input.MoveAxis.x;
+
+                if (movementDirection != Vector3.zero) 
+                    transform.forward = movementDirection.normalized;
             }
             else
             {
@@ -58,9 +65,7 @@ namespace HeroLogic.Movements
                 _animator.SetBool(Constants.HeroWithoutSwordRunHash, false);
             }
 
-            movementVector += Physics.gravity;
-
-            _controller.Move(movementVector * (Constants.HeroSpeed * Time.deltaTime));
+            _controller.Move(movementDirection * (Constants.HeroSpeed * Time.deltaTime));
         }
     }
 }

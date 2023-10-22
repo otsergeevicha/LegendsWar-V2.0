@@ -32,10 +32,9 @@ namespace HeroLogic
             _health = new HeroHealth(Constants.HeroMaxHealth);
             _health.Died += GameOver;
 
-            _heroMovement.Construct(input, _animator, this);
+            _heroMovement.Construct(input, cameraFollow, _animator, this);
             _heroShooting.Construct(input, pool, cameraFollow, _animator, this);
             _save.AccessProgress()._characterAttributes.RecordHealth(Health);
-            // _save.AccessProgress().DataStats.RecordEnergy(Energy);
         }
         
         public int Health => 
