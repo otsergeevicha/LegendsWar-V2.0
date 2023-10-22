@@ -44,6 +44,11 @@ public static class Constants
     public const float DelayRegeneration = .5f;
     public const int DelayRegenerationMagazine = 5000;
 
+    //sword
+    public const float RadiusSword = 1f;
+    public const int SwordDamage = 15;
+    public const int SwordUltimateDamage = 150;
+
     //grenade
     public const float RadiusExplosion = 10f;
     public const float ForceExplosion = 500f;

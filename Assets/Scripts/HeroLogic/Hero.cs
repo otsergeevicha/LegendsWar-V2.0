@@ -24,7 +24,7 @@ namespace HeroLogic
         private HeroHealth _health;
         private ISave _save;
 
-        public event Action SwordAnimationEnded;
+        public event Action SwordAnimationHited;
 
         public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow, ISave save)
         {
@@ -68,7 +68,7 @@ namespace HeroLogic
             Time.timeScale = 0;
         }
 
-        private void EndAnimation() => 
-            SwordAnimationEnded?.Invoke();
+        private void HitSwordAnimation() => 
+            SwordAnimationHited?.Invoke();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using CameraLogic;
+using HeroLogic;
 using Infrastructure.Factory.Pools;
 using Plugins.MonoCache;
 using Services.Inputs;
@@ -15,12 +16,12 @@ namespace AbilityLogic
         
         private IInputService _input;
 
-        public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow, Animator animator)
+        public void Construct(IInputService input, Pool pool, CameraFollow cameraFollow, Animator animator, Hero hero)
         {
              _input = input;
             
             for (int i = 0; i < _abilities.Length; i++) 
-                _abilities[i].Construct(_input, pool, cameraFollow, animator);
+                _abilities[i].Construct(_input, pool, cameraFollow, animator, hero);
             
             SelectAbility((int)IndexAbility.Sword);
             

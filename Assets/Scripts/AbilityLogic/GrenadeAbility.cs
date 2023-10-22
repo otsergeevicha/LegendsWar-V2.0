@@ -2,6 +2,7 @@
 using AbilityLogic.Catridges;
 using Ammo.Ammunition;
 using CameraLogic;
+using HeroLogic;
 using Infrastructure.Factory.Pools;
 using Services.Inputs;
 using UnityEngine;
@@ -26,7 +27,7 @@ namespace AbilityLogic
             (int)IndexAbility.Grenade;
 
         public override void Construct(IInputService inputService, Pool pool, CameraFollow cameraFollow,
-            Animator animator)
+            Animator animator, Hero hero)
         {
             _animator = animator;
             _pool = pool;

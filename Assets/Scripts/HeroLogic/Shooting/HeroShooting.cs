@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using AbilityLogic;
 using CameraLogic;
 using Infrastructure.Factory.Pools;
@@ -21,7 +20,7 @@ namespace HeroLogic.Shooting
         {
             _hero = hero;
             input.PushShoot(OnShoot);
-            _abilitySelector.Construct(input, pool, cameraFollow, animator);
+            _abilitySelector.Construct(input, pool, cameraFollow, animator, hero);
 
             _abilitySelector.AbilityChanged += SetCurrentAbility;
         }

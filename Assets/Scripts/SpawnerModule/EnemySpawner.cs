@@ -7,7 +7,7 @@ namespace SpawnerModule
 {
     public class EnemySpawner : MonoCache
     {
-        private readonly Vector3 _spawnPosition = new (0, 6, 0);
+        private readonly Vector3 _spawnPosition = new (23,5,20);
         
         private Pool _pool;
         private Boss _boss;
