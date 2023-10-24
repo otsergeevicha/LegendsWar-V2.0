@@ -64,6 +64,8 @@ namespace HeroLogic.Movements
                 _animator.SetBool(Constants.HeroSwordRunHash, false);
                 _animator.SetBool(Constants.HeroWithoutSwordRunHash, false);
             }
+            
+            movementDirection += Physics.gravity;
 
             _controller.Move(movementDirection * (Constants.HeroSpeed * Time.deltaTime));
         }
