@@ -40,6 +40,9 @@ public static class Constants
     public static readonly int UltimateHash = Animator.StringToHash("Ultimate");
     public static readonly int CastGrenadeHash = Animator.StringToHash("CastGrenade");
     
+    //bosses
+    public const float MinimalDistance = 1f;
+    
     //regeneration
     public const float DelayRegeneration = .5f;
     public const int DelayRegenerationMagazine = 5000;

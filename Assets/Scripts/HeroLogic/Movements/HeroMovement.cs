@@ -25,9 +25,10 @@ namespace HeroLogic.Movements
         {
             _input = input;
             _hero = hero;
-            _input.OnControls();
             _cameraFollow = cameraFollow.transform;
             _animator = animator;
+            
+            _input.OnControls();
         }
 
         private void OnValidate() => 

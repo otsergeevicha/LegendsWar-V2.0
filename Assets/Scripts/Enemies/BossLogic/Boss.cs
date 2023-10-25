@@ -1,16 +1,15 @@
 ﻿using System;
+using Enemies.AI;
 using HeroLogic;
 using UnityEngine;
 
 namespace Enemies.BossLogic
 {
+    [RequireComponent(typeof(BossStateMachine))]
     public abstract class Boss : Enemy
     {
-        protected Transform TransformHero;
-
         public abstract event Action Died;
 
-        public void Inject(Transform transformHero) => 
-            TransformHero = transformHero;
+        // public abstract void Construct();
     }
 }
