@@ -13,8 +13,11 @@ namespace Infrastructure.Factory.Pools
         {
             CompletionArray(factory);
 
-            foreach (Boss boss in _bosses) 
+            foreach (Boss boss in _bosses)
+            {
+                boss.Construct(hero);
                 boss.gameObject.SetActive(false);
+            }
         }
 
         private void CompletionArray(IGameFactory factory)

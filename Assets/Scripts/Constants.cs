@@ -39,9 +39,19 @@ public static class Constants
     
     public static readonly int UltimateHash = Animator.StringToHash("Ultimate");
     public static readonly int CastGrenadeHash = Animator.StringToHash("CastGrenade");
-    
+
     //bosses
-    public const float MinimalDistance = 1f;
+    public const float MinDistance = 1f;
+    public const float MaxDistance = 2f;
+    public const float PursuitDistance = 5f;
+    public const float MaxRangePursuit = 10f;
+    public const int TimeConditionsPersecution = 500;
+    
+    //animator bosses
+    public static readonly int IdleStateHash = Animator.StringToHash("IdleState");
+    public static readonly int MeleeAttackStateHash = Animator.StringToHash("MeleeAttackState");
+    public static readonly int RangeAttackStateHash = Animator.StringToHash("RangeAttackState");
+    public static readonly int BossWalkHash = Animator.StringToHash("BossWalk");
     
     //regeneration
     public const float DelayRegeneration = .5f;
