@@ -1,6 +1,5 @@
 ﻿using System;
 using Enemies.AI;
-using HeroLogic;
 using UnityEngine;
 
 namespace Enemies.BossLogic
@@ -10,6 +9,6 @@ namespace Enemies.BossLogic
     {
         public abstract event Action Died;
 
-        // public abstract void Construct();
+         public abstract void Construct();
     }
 }

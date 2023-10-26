@@ -5,6 +5,10 @@ namespace Enemies.BossLogic.MonsterPlantLogic
     public class MonsterPlant : Boss
     {
         public override event Action Died;
+        public override void Construct()
+        {
+            throw new NotImplementedException();
+        }
 
         public override int GetId() =>
             (int)BossId.MonsterPlant;
