@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Enemies.AI
+namespace Enemies.AI.States
 {
     public class RangeAttackState : State
     {

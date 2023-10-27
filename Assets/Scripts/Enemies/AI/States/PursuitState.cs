@@ -1,7 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Enemies.AI
+namespace Enemies.AI.States
 {
     public class PursuitState : State
     {
@@ -32,6 +32,16 @@ namespace Enemies.AI
             LaunchObserve(Constants.PursuitDistance, Constants.MaxRangePursuit).Forget();
         }
 
+        public override void InActive() => 
+            AnimatorCached.SetBool(Constants.BossWalkHash, false);
+
+        private bool ConditionsPersecution(float pursuitDistance, float maxRangePursuit) => 
+            Vector3.Distance(Agent.transform.position, _heroTransform.position) >= pursuitDistance 
+            && Vector3.Distance(Agent.transform.position, _heroTransform.position) < maxRangePursuit;
+
+        private bool HeroNotReached(float pursuitDistance) =>
+            Vector3.Distance(Agent.transform.position, _heroTransform.position) >= pursuitDistance;
+
         private async UniTaskVoid LaunchObserve(float pursuitDistance, float maxRangePursuit)
         {
             while (ConditionsPersecution(pursuitDistance, maxRangePursuit))
@@ -46,15 +56,5 @@ namespace Enemies.AI
             if (HeroNotReached(Constants.MaxRangePursuit)) 
                 StateMachine.EnterBehavior<IdleState>();
         }
-
-        public override void InActive() => 
-            AnimatorCached.SetBool(Constants.BossWalkHash, false);
-
-        private bool ConditionsPersecution(float pursuitDistance, float maxRangePursuit) => 
-            Vector3.Distance(Agent.transform.position, _heroTransform.position) >= pursuitDistance 
-            && Vector3.Distance(Agent.transform.position, _heroTransform.position) < maxRangePursuit;
-
-        private bool HeroNotReached(float pursuitDistance) =>
-            Vector3.Distance(Agent.transform.position, _heroTransform.position) >= pursuitDistance;
     }
 }

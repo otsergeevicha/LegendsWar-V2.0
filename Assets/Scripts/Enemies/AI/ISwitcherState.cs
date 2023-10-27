@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Enemies.BossLogic;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Enemies.AI

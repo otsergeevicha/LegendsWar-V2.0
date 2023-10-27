@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Enemies.AI
+namespace Enemies.AI.States
 {
     public class DieState : State
     {
@@ -16,14 +16,8 @@ namespace Enemies.AI
             ExitedState -= InActive;
         }
 
-        public override void OnActive()
-        {
-            throw new NotImplementedException();
-        }
+        public override void OnActive() {}
 
-        public override void InActive()
-        {
-            throw new NotImplementedException();
-        }
+        public override void InActive() {}
     }
 }
