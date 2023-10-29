@@ -50,8 +50,10 @@ public static class Constants
     //animator bosses
     public static readonly int IdleStateHash = Animator.StringToHash("IdleState");
     public static readonly int MeleeAttackStateHash = Animator.StringToHash("MeleeAttackState");
-    public static readonly int RangeAttackStateHash = Animator.StringToHash("RangeAttackState");
+    public static readonly int EnragedAttackStateHash = Animator.StringToHash("EnragedAttackState");
     public static readonly int BossWalkHash = Animator.StringToHash("BossWalk");
+    public static readonly int BossDieHash = Animator.StringToHash("Die");
+    public static readonly int BossGetHitHash = Animator.StringToHash("GetHit");
     
     //regeneration
     public const float DelayRegeneration = .5f;
@@ -71,10 +73,6 @@ public static class Constants
     
     //ultimate
     public const int UltimateMagazineSize = 1;
-
-    //bullet
-    public const int BulletDamage = 50;
-    public const float BulletSpeed = 20f;
 
     //pool
     public const int CountSpawnGrenade = 20;

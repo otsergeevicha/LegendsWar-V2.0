@@ -25,13 +25,15 @@ namespace Enemies.AI.States
             _bossTriggerZone.Triggered -= OnTriggered;
         }
 
-        public override void OnActive() => 
-            AnimatorCached.SetTrigger(Constants.IdleStateHash);
+        public override void OnActive()
+        {
+        }
 
-        public override void InActive() => 
-            AnimatorCached.ResetTrigger(Constants.IdleStateHash);
+        public override void InActive()
+        {
+        }
 
         private void OnTriggered() => 
-            StateMachine.EnterBehavior<MeleeAttackState>();
+            StateMachine.EnterBehavior<EnragedAttackState>();
     }
 }

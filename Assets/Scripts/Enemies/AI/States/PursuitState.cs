@@ -48,7 +48,7 @@ namespace Enemies.AI.States
                 await UniTask.Delay(Constants.TimeConditionsPersecution);
 
             if (HeroNotReached(Constants.MaxDistance)) 
-                StateMachine.EnterBehavior<RangeAttackState>();
+                StateMachine.EnterBehavior<EnragedAttackState>();
             
             if (HeroNotReached(Constants.MinDistance)) 
                 StateMachine.EnterBehavior<MeleeAttackState>();

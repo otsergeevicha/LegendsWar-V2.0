@@ -12,7 +12,7 @@ namespace Enemies.AI
     [RequireComponent(typeof(Boss))]
     [RequireComponent(typeof(IdleState))]
     [RequireComponent(typeof(MeleeAttackState))]
-    [RequireComponent(typeof(RangeAttackState))]
+    [RequireComponent(typeof(EnragedAttackState))]
     [RequireComponent(typeof(PursuitState))]
     [RequireComponent(typeof(DieState))]
     public class BossStateMachine : MonoCache
@@ -34,7 +34,7 @@ namespace Enemies.AI
             {
                 [typeof(IdleState)] = Get<IdleState>(),
                 [typeof(MeleeAttackState)] = Get<MeleeAttackState>(),
-                [typeof(RangeAttackState)] = Get<RangeAttackState>(),
+                [typeof(EnragedAttackState)] = Get<EnragedAttackState>(),
                 [typeof(PursuitState)] = Get<PursuitState>(),
                 [typeof(DieState)] = Get<DieState>()
             };

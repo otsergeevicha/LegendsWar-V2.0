@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Enemies.AI.States
 {
-    public class RangeAttackState : State
+    public class EnragedAttackState : State
     {
         private Transform _heroTransform;
 
@@ -22,17 +23,28 @@ namespace Enemies.AI.States
 
         public override void OnActive()
         {
+            WatchingHero().Forget();
+            
             if (HeroNotReached(Constants.MaxDistance)) 
-                AnimatorCached.SetBool(Constants.RangeAttackStateHash, true);
+                AnimatorCached.SetBool(Constants.EnragedAttackStateHash, true);
             
             if (!HeroNotReached(Constants.MaxDistance)) 
                 StateMachine.EnterBehavior<PursuitState>();
         }
 
         public override void InActive() => 
-            AnimatorCached.SetBool(Constants.RangeAttackStateHash, false);
+            AnimatorCached.SetBool(Constants.EnragedAttackStateHash, false);
 
         private bool HeroNotReached(float maxDistance) =>
             Vector3.Distance(Agent.transform.position, _heroTransform.position) >= maxDistance;
+        
+        private async UniTaskVoid WatchingHero()
+        {
+            while (enabled)
+            {
+                transform.LookAt(_heroTransform);
+                await UniTask.Delay(100, false, PlayerLoopTiming.FixedUpdate);
+            }
+        }
     }
 }

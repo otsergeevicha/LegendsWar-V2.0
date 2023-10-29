@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Enemies.AI.States
 {
@@ -22,11 +23,13 @@ namespace Enemies.AI.States
 
         public override void OnActive()
         {
+            WatchingHero().Forget();
+            
             if (HeroNotReached(Constants.MinDistance)) 
                 AnimatorCached.SetBool(Constants.MeleeAttackStateHash, true);
             
             if (!HeroNotReached(Constants.MinDistance)) 
-                StateMachine.EnterBehavior<RangeAttackState>();
+                StateMachine.EnterBehavior<EnragedAttackState>();
         }
 
         public override void InActive() => 
@@ -34,5 +37,14 @@ namespace Enemies.AI.States
 
         private bool HeroNotReached(float minimalDistance) =>
             Vector3.Distance(Agent.transform.position, _heroTransform.position) >= minimalDistance;
+
+        private async UniTaskVoid WatchingHero()
+        {
+            while (enabled)
+            {
+                transform.LookAt(_heroTransform);
+                await UniTask.Delay(100, false, PlayerLoopTiming.FixedUpdate);
+            }
+        }
     }
 }
