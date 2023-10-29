@@ -35,6 +35,21 @@ namespace Enemies.AI.States
         public override void InActive() => 
             AnimatorCached.SetBool(Constants.MeleeAttackStateHash, false);
 
+        private void Attacked()
+        {
+            
+        }
+
+        private void StartAoeAttacked()
+        {
+            
+        }
+        
+        private void EndAoeAttacked()
+        {
+            
+        }
+        
         private bool HeroNotReached(float minimalDistance) =>
             Vector3.Distance(Agent.transform.position, _heroTransform.position) >= minimalDistance;
 

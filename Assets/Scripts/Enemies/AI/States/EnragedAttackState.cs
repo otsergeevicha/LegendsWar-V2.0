@@ -35,6 +35,10 @@ namespace Enemies.AI.States
         public override void InActive() => 
             AnimatorCached.SetBool(Constants.EnragedAttackStateHash, false);
 
+        private void Attacked()
+        {
+        }
+        
         private bool HeroNotReached(float maxDistance) =>
             Vector3.Distance(Agent.transform.position, _heroTransform.position) >= maxDistance;
         

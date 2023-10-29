@@ -34,6 +34,6 @@ namespace Enemies.AI.States
         }
 
         private void OnTriggered() => 
-            StateMachine.EnterBehavior<EnragedAttackState>();
+            StateMachine.EnterBehavior<PursuitState>();
     }
 }

@@ -23,9 +23,11 @@ namespace Enemies.AI.States
 
         public override void OnActive()
         {
+            WatchingHero().Forget();
+            
             if (HeroNotReached(Constants.PursuitDistance))
             {
-                Agent.destination = _heroTransform.position;
+               // Agent.destination = _heroTransform.position;
                 AnimatorCached.SetBool(Constants.BossWalkHash, true);
             }
 
@@ -42,14 +44,20 @@ namespace Enemies.AI.States
         private bool HeroNotReached(float pursuitDistance) =>
             Vector3.Distance(Agent.transform.position, _heroTransform.position) >= pursuitDistance;
 
+        private async UniTaskVoid WatchingHero()
+        {
+            while (enabled)
+            {
+                transform.LookAt(_heroTransform);
+                await UniTask.Delay(100, false, PlayerLoopTiming.FixedUpdate);
+            }
+        }
+        
         private async UniTaskVoid LaunchObserve(float pursuitDistance, float maxRangePursuit)
         {
             while (ConditionsPersecution(pursuitDistance, maxRangePursuit))
                 await UniTask.Delay(Constants.TimeConditionsPersecution);
 
-            if (HeroNotReached(Constants.MaxDistance)) 
-                StateMachine.EnterBehavior<EnragedAttackState>();
-            
             if (HeroNotReached(Constants.MinDistance)) 
                 StateMachine.EnterBehavior<MeleeAttackState>();
             
