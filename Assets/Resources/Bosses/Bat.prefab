@@ -368,7 +368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac9c32964574307b5f796048987cca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bossTriggerZone: {fileID: 8180347881649069044}
 --- !u!114 &1017433163761746388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +428,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2a2f178be64b3aa9a610abee3cf146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bossTriggerZone: {fileID: 8180347881649069044}
+  _boss: {fileID: 6349447227243499982}
+  _animator: {fileID: 95937921189647870}
+  _navMeshAgent: {fileID: 2510132835965614504}
 --- !u!135 &8496182094172073546
 SphereCollider:
   m_ObjectHideFlags: 0

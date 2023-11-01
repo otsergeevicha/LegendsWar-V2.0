@@ -10,28 +10,15 @@ namespace Enemies.AI.States
         private void OnValidate() => 
             _bossTriggerZone = ChildrenGet<BossTriggerZone>();
 
-        protected override void OnEnabled()
-        {
-            EnteredState += OnActive;
-            ExitedState += InActive;
-            
+        protected override void OnEnabled() => 
             _bossTriggerZone.Triggered += OnTriggered;
-        }
 
-        protected override void OnDisabled()
-        {
-            EnteredState -= OnActive;
-            ExitedState -= InActive;
+        protected override void OnDisabled() => 
             _bossTriggerZone.Triggered -= OnTriggered;
-        }
 
-        public override void OnActive()
-        {
-        }
+        public override void OnActive() {}
 
-        public override void InActive()
-        {
-        }
+        public override void InActive() {}
 
         private void OnTriggered() => 
             StateMachine.EnterBehavior<PursuitState>();

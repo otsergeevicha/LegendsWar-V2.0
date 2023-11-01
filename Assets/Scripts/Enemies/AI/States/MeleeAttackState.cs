@@ -3,24 +3,8 @@ using UnityEngine;
 
 namespace Enemies.AI.States
 {
-    public class MeleeAttackState : State
+    public class MeleeAttackState : State, IBossAttacker
     {
-        private Transform _heroTransform;
-
-        protected override void OnEnabled()
-        {
-            EnteredState += OnActive;
-            ExitedState += InActive;
-            
-            _heroTransform = HeroTransform;
-        }
-
-        protected override void OnDisabled()
-        {
-            EnteredState -= OnActive;
-            ExitedState -= InActive;
-        }
-
         public override void OnActive()
         {
             WatchingHero().Forget();
@@ -35,29 +19,20 @@ namespace Enemies.AI.States
         public override void InActive() => 
             AnimatorCached.SetBool(Constants.MeleeAttackStateHash, false);
 
-        private void Attacked()
-        {
-            
-        }
+        public void Attacked() {}
 
-        private void StartAoeAttacked()
-        {
-            
-        }
-        
-        private void EndAoeAttacked()
-        {
-            
-        }
+        public void StartAoeAttacked() {}
+
+        public void EndAoeAttacked() {}
         
         private bool HeroNotReached(float minimalDistance) =>
-            Vector3.Distance(Agent.transform.position, _heroTransform.position) >= minimalDistance;
+            Vector3.Distance(Agent.transform.position, HeroTransform.position) >= minimalDistance;
 
         private async UniTaskVoid WatchingHero()
         {
             while (enabled)
             {
-                transform.LookAt(_heroTransform);
+                transform.LookAt(HeroTransform);
                 await UniTask.Delay(100, false, PlayerLoopTiming.FixedUpdate);
             }
         }

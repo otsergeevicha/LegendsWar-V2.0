@@ -12,24 +12,15 @@ namespace Enemies.AI
         protected NavMeshAgent Agent;
         protected Transform HeroTransform;
 
-        protected event Action EnteredState;
-        protected event Action ExitedState;
-
         public abstract void OnActive();
         public abstract void InActive();
-        
-        public void EnterBehavior()
-        {
-            enabled = true;
-            EnteredState?.Invoke();
-        }
 
-        public void ExitBehavior()
-        {
-            ExitedState?.Invoke();
+        public void EnterBehavior() => 
+            enabled = true;
+
+        public void ExitBehavior() => 
             enabled = false;
-        }
-        
+
         public void Init(BossStateMachine stateMachine, Animator animator, NavMeshAgent navMeshAgent, Transform hero)
         {
             HeroTransform = hero;
