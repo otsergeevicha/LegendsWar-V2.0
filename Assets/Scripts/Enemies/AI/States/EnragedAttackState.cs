@@ -12,12 +12,6 @@ namespace Enemies.AI.States
         public override void InActive() => 
             AnimatorCached.SetBool(Constants.MeleeAttackStateHash, false);
 
-        private bool DistanceAttack(float minimalDistance) =>
-            Vector3.Distance(Boss.SpawnPointAttack, HeroTransform.position) <= minimalDistance;
-
-        private bool RelevantConditions() => 
-            !DistanceAttack(Boss.DistanceAttack) && AnimatorCached.GetCurrentAnimatorStateInfo(0).normalizedTime >= .7f;
-
         private async UniTaskVoid WatchingHero()
         {
             AnimatorCached.SetBool(Constants.MeleeAttackStateHash, true);
@@ -25,11 +19,7 @@ namespace Enemies.AI.States
             while (enabled)
             {
                 transform.LookAt(HeroTransform);
-
-                if (RelevantConditions()) 
-                    StateMachine.EnterBehavior<PursuitState>();
-
-                await UniTask.Delay(100, false, PlayerLoopTiming.PreLateUpdate);
+                await UniTask.Delay(100, false, PlayerLoopTiming.FixedUpdate);
             }
         }
     }

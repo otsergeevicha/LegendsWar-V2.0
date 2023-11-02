@@ -13,7 +13,17 @@ namespace Enemies.BossLogic.BatLogic
         public override int DamageAttack { get; set; }
         public override float DistanceAttack { get; set; }
 
-        public override bool CheckEnrage { get; set; }
+        public override bool CheckEnrage
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+                
+            }
+        }
 
         public override void Construct(Hero hero) => 
             _hero = hero;
