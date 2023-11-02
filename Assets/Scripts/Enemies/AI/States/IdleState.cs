@@ -11,10 +11,10 @@ namespace Enemies.AI.States
             _bossTriggerZone = ChildrenGet<BossTriggerZone>();
 
         protected override void OnEnabled() => 
-            _bossTriggerZone.Triggered += OnTriggered;
+            _bossTriggerZone.EnterTriggered += OnTriggered;
 
         protected override void OnDisabled() => 
-            _bossTriggerZone.Triggered -= OnTriggered;
+            _bossTriggerZone.EnterTriggered -= OnTriggered;
 
         public override void OnActive() {}
 

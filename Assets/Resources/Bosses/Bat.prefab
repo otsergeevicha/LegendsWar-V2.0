@@ -368,6 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac9c32964574307b5f796048987cca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bossTriggerZone: {fileID: 8180347881649069044}
 --- !u!114 &1017433163761746388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b849314b884f42079a742fd1028e0911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bossTriggerZone: {fileID: 8180347881649069044}
 --- !u!114 &3267306617457443817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,10 +430,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2a2f178be64b3aa9a610abee3cf146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bossTriggerZone: {fileID: 8180347881649069044}
   _boss: {fileID: 6349447227243499982}
   _animator: {fileID: 95937921189647870}
   _navMeshAgent: {fileID: 2510132835965614504}
+  _idleState: {fileID: 3775785737627318309}
+  _meleeAttackState: {fileID: 1017433163761746388}
+  _enragedAttackState: {fileID: 1997522295678620992}
+  _pursuitState: {fileID: 8601989637540209705}
+  _dieState: {fileID: 3267306617457443817}
 --- !u!135 &8496182094172073546
 SphereCollider:
   m_ObjectHideFlags: 0

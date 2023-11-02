@@ -3,37 +3,32 @@ using UnityEngine;
 
 namespace Enemies.AI.States
 {
-    public class MeleeAttackState : State, IBossAttacker
+    public class MeleeAttackState : State
     {
-        public override void OnActive()
-        {
+        public override void OnActive() => 
             WatchingHero().Forget();
-            
-            if (HeroNotReached(Constants.MinDistance)) 
-                AnimatorCached.SetBool(Constants.MeleeAttackStateHash, true);
-            
-            if (!HeroNotReached(Constants.MinDistance)) 
-                StateMachine.EnterBehavior<EnragedAttackState>();
-        }
 
         public override void InActive() => 
             AnimatorCached.SetBool(Constants.MeleeAttackStateHash, false);
 
-        public void Attacked() {}
+        private bool DistanceAttack(float minimalDistance) =>
+            Vector3.Distance(Boss.SpawnPointAttack, HeroTransform.position) <= minimalDistance;
 
-        public void StartAoeAttacked() {}
-
-        public void EndAoeAttacked() {}
-        
-        private bool HeroNotReached(float minimalDistance) =>
-            Vector3.Distance(Agent.transform.position, HeroTransform.position) >= minimalDistance;
+        private bool RelevantConditions() => 
+            !DistanceAttack(Boss.DistanceAttack) && AnimatorCached.GetCurrentAnimatorStateInfo(0).normalizedTime >= .7f;
 
         private async UniTaskVoid WatchingHero()
         {
+            AnimatorCached.SetBool(Constants.MeleeAttackStateHash, true);
+            
             while (enabled)
             {
                 transform.LookAt(HeroTransform);
-                await UniTask.Delay(100, false, PlayerLoopTiming.FixedUpdate);
+
+                if (RelevantConditions()) 
+                    StateMachine.EnterBehavior<PursuitState>();
+
+                await UniTask.Delay(100, false, PlayerLoopTiming.PreLateUpdate);
             }
         }
     }

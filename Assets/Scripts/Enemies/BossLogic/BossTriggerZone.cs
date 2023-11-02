@@ -7,12 +7,19 @@ namespace Enemies.BossLogic
 {
     public class BossTriggerZone : MonoCache
     {
-        public event Action Triggered;
+        public event Action EnterTriggered;
+        public event Action ExitTriggered;
 
         private void OnTriggerEnter(Collider collision)
         {
             if (collision.TryGetComponent(out Hero _)) 
-                Triggered?.Invoke();
+                EnterTriggered?.Invoke();
+        }
+        
+        private void OnTriggerExit(Collider collision)
+        {
+            if (collision.TryGetComponent(out Hero _)) 
+                ExitTriggered?.Invoke();
         }
     }
 }

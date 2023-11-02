@@ -9,9 +9,12 @@ namespace Enemies.BossLogic
     public abstract class Boss : Enemy
     {
         public abstract event Action Died;
-
+        public abstract Vector3 SpawnPointAttack { get; set; }
+        public abstract float RadiusAttack { get; set; }
+        public abstract int DamageAttack { get; set; }
+        public abstract float DistanceAttack { get; set; }
+        public abstract Hero GetHero { get; }
+        public abstract bool CheckEnrage { get; set; }
         public abstract void Construct(Hero hero);
-
-        public abstract Hero GetHero();
     }
 }

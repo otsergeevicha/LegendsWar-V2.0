@@ -1,5 +1,6 @@
 ﻿using System;
 using HeroLogic;
+using UnityEngine;
 
 namespace Enemies.BossLogic.BatLogic
 {
@@ -7,11 +8,17 @@ namespace Enemies.BossLogic.BatLogic
     {
         private Hero _hero;
         public override event Action Died;
-        
+        public override Vector3 SpawnPointAttack { get; set; }
+        public override float RadiusAttack { get; set; }
+        public override int DamageAttack { get; set; }
+        public override float DistanceAttack { get; set; }
+
+        public override bool CheckEnrage { get; set; }
+
         public override void Construct(Hero hero) => 
             _hero = hero;
 
-        public override Hero GetHero() =>
+        public override Hero GetHero => 
             _hero;
 
         public override int GetId() =>

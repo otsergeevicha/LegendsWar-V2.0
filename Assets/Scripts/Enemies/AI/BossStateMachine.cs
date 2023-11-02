@@ -56,7 +56,7 @@ namespace Enemies.AI
 
             foreach (var behavior in _allBehaviors)
             {
-                behavior.Value.Init(this, _animator, _navMeshAgent, _boss.GetHero().transform);
+                behavior.Value.Init(this, _animator, _navMeshAgent, _boss.GetHero.transform, _boss);
                 behavior.Value.ExitBehavior();
             }
 

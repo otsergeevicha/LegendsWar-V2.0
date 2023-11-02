@@ -41,6 +41,8 @@ public static class Constants
     public static readonly int CastGrenadeHash = Animator.StringToHash("CastGrenade");
 
     //bosses
+    public const int CooldownAgroBoss = 3500;
+    
     public const float MinDistance = 1f;
     public const float MaxDistance = 2f;
     public const float PursuitDistance = 5f;
@@ -75,7 +77,7 @@ public static class Constants
     public const int UltimateMagazineSize = 1;
 
     //pool
-    public const int CountSpawnGrenade = 20;
+    public const int CountSpawnGrenade = 5;
 
     //check device
     public const string KeyboardMouse = "KeyboardMouse";
